@@ -1,0 +1,55 @@
+1578021990521|16|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578026652816|9|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578026657799|8|statement|connection 2|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578027054967|9|statement|connection 3|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578029485047|10|statement|connection 4|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578029567981|9|statement|connection 5|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578029915861|11|statement|connection 6|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578031712362|8|statement|connection 7|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578031754601|10|statement|connection 8|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578031833970|9|statement|connection 9|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578031888903|10|statement|connection 10|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578032024362|9|statement|connection 11|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578033011433|9|statement|connection 12|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578033302537|10|statement|connection 13|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578033390939|9|statement|connection 14|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129036941|16|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129215295|17|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129316773|15|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129613919|15|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129729622|15|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129860160|9|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129864536|18|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578129906702|19|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578130046239|17|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578130176405|17|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578130210813|17|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578130381770|19|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578130527137|16|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578130616616|16|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578168164545|18|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578791250950|37|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578791268581|98|statement|connection 0|insert into code(phone,code,time) values (?,?,?)|insert into code(phone,code,time) values ('13272950110','034802','12-一月-20')
+1578791378915|36|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578791391591|43|statement|connection 0|insert into code(phone,code,time) values (?,?,?)|insert into code(phone,code,time) values ('13272950110','094850','12-一月-20')
+1578791570023|35|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578791574121|56|statement|connection 0|insert into code(phone,code,time) values (?,?,?)|insert into code(phone,code,time) values ('13272950110','151765','12-一月-20')
+1578791663030|42|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578791667340|65|statement|connection 0|insert into code(phone,code,time) values (?,?,?)|insert into code(phone,code,time) values ('13272950110','963329','12-一月-20')
+1578791780377|29|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578791784479|44|statement|connection 0|insert into code(phone,code,time) values (?,?,?)|insert into code(phone,code,time) values ('13272950110','592802','12-一月-20')
+1578791993306|30|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578791997423|52|statement|connection 0|insert into code(phone,code,time) values (?,?,?)|insert into code(phone,code,time) values ('13272950110','036354','12-一月-20')
+1578792215102|39|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578792317207|41|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578792321484|74|statement|connection 0|insert into system_user (      username, password, salt, phone, role_ids, locked    ) values (      ?,?,?,?,?,?    )|insert into system_user (      username, password, salt, phone, role_ids, locked    ) values (      'username','password','55555','12345678910','1,2,3',1    )
+1578792378770|38|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578792382922|72|statement|connection 0|insert into sys_user (      username, password, salt, phone, role_ids, locked    ) values (      ?,?,?,?,?,?    )|insert into sys_user (      username, password, salt, phone, role_ids, locked    ) values (      'username','password','55555','12345678910','1,2,3',1    )
+1578792530913|38|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578792537596|46|statement|connection 0|insert into code(phone,code,time) values (?,?,?)|insert into code(phone,code,time) values ('13272950110','945400','12-一月-20')
+1578792731238|32|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578792737691|39|statement|connection 0|INSERT INTO code(phone, code, time) VALUES (?, ?, ?)|INSERT INTO code(phone, code, time) VALUES ('13272950110', '370784', '12-一月-20')
+1578792832867|34|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578792836971|49|statement|connection 0|INSERT INTO code(phone, code, time) VALUES (?, ?, now())|INSERT INTO code(phone, code, time) VALUES ('13272950110', '744497', now())
+1578929814413|23|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1578929852280|130|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL

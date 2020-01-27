@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.guilongkeji.zsst.mapper.SysRoleMapper">
+  <resultMap id="BaseResultMap" type="cn.com.guilongkeji.zsst.pojo.SysRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="resource_ids" jdbcType="VARCHAR" property="resourceIds" />
+    <result column="available" jdbcType="TINYINT" property="available" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, role, description, resource_ids, available
+  </sql>
+  <sql id="Base_Column_Insert">
+    role, description, resource_ids, available
+  </sql>
+  <sql id="Base_Column_Java">
+    #{role},#{description},#{resourceIds},#{available}
+  </sql>
+  <sql id="Base_Column_Item">
+    #{item.role},#{item.description},#{item.resourceIds},#{item.available}
+  </sql>
+  <sql id="Base_Column_Update_Item">
+    role=#{item.role},description=#{item.description},#{item.resourceIds},#{item.available}
+  </sql>
+  <sql id="Base_Column_Update">
+    role=#{role},description=#{description},#{resourceIds},#{available}
+  </sql>
+  <insert id="addRole" parameterType="cn.com.guilongkeji.zsst.pojo.SysRole">
+    insert into sys_role(<include refid="Base_Column_Insert"></include>) values (<include
+          refid="Base_Column_Java"></include>)
+  </insert>
+  <insert id="addAllRole" parameterType="cn.com.guilongkeji.zsst.pojo.SysRole">
+    insert into sys_role(<include refid="Base_Column_Insert"></include>) values
+    <foreach collection="sysRoleList" separator="," item="item">
+      <include refid="Base_Column_Item"></include>
+    </foreach>
+  </insert>
+  <update id="updateRole" parameterType="cn.com.guilongkeji.zsst.pojo.SysRole">
+    update set <include refid="Base_Column_Update"></include> where id = #{id}
+  </update>
+  <update id="updateRoles" parameterType="cn.com.guilongkeji.zsst.pojo.SysRole">
+    <foreach collection="sysRoleList" item="item" separator=";">
+      update set i<include refid="Base_Column_Update_Item"></include>) where id = #{item.id}
+    </foreach>
+  </update>
+  <select id="getRoleById" resultMap="BaseResultMap" parameterType="integer">
+    select <include refid="Base_Column_List"></include> from sys_role where id = #{id}
+  </select>
+  <select id="getRoleByUser" resultMap="BaseResultMap" parameterType="cn.com.guilongkeji.zsst.pojo.SysUser">
+    select <include refid="Base_Column_List"></include> from sys_role where id in #{roleIds}
+  </select>
+  <select id="getAllRole" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from sys_role
+  </select>
+
+</mapper>

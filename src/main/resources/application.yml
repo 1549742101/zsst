@@ -1,0 +1,62 @@
+#Spring Boot Config
+server:
+  #ssl:
+  #key-store: C:/Program Files/tmcssl/2894343_guilongkeji.com.cn.pfx
+  #key-store-password: m85e0eH7
+  servlet:
+    session:
+      timeout: 720
+  port: 8888
+#spring.jpa.open-in-view=false
+###文件上传
+file:
+  ###静态资源对外暴露的访问路径
+  staticAccessPath: api/img/**
+  ###静态资源实际存储路径
+  uploadFolder: C:/zsst/upload/img/
+spring:
+  servlet:
+    multipart:
+    # 单个文件的最大值
+    max-file-size: 10MB
+    # 上传文件总的最大值
+    max-request-size: 10MB
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://cdb-1lmq810s.cd.tencentcdb.com:10055/zsst?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false
+    username: root
+    password: xgl020331
+    druid:
+      initial-size: 1
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 60000
+      validation-query: SELECT 1 FROM DUAL
+  devtools:
+    restart:
+      enabled: true
+    add-properties: false
+  jpa:
+    open-in-view: false
+  mvc:
+    view:
+      suffix: .html
+      request-context-attribute: request
+      charset: UTF-8
+    #static-path-pattern: /**
+resources:
+  static-locations: classpath:/resources/,classpath:/templates/,classpath:/public/,classpath:/static/,file:${file.uploadFolder}
+
+#MyBatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.app.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+#logging
+logging:
+  file:
+    path: E:\zsst\log

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.guilongkeji.zsst.mapper.AssessMapper">
+  <resultMap id="BaseResultMap" type="cn.com.guilongkeji.zsst.pojo.Assess">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="dish_id" jdbcType="INTEGER" property="dishId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="text" jdbcType="VARCHAR" property="text" />
+    <result column="star" jdbcType="INTEGER" property="star" />
+    <result column="img" jdbcType="INTEGER" property="img" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, user_id, dish_id, order_id, text, star, img, status
+  </sql>
+</mapper>

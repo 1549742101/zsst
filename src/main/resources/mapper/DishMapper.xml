@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.guilongkeji.zsst.mapper.DishMapper">
+  <resultMap id="BaseResultMap" type="cn.com.guilongkeji.zsst.pojo.Dish">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="img" jdbcType="INTEGER" property="img" />
+    <result column="sales" jdbcType="INTEGER" property="sales" />
+    <result column="sale" jdbcType="INTEGER" property="sale" />
+    <result column="praise" jdbcType="DECIMAL" property="praise" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="active" jdbcType="TINYINT" property="active" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, name, money, img, sales, sale, praise, shop_id, active, status
+  </sql>
+</mapper>

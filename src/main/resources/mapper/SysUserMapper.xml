@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.guilongkeji.zsst.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="cn.com.guilongkeji.zsst.pojo.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role_ids" jdbcType="VARCHAR" property="roleIds" />
+    <result column="locked" jdbcType="TINYINT" property="locked" />
+  </resultMap>
+  <parameterMap id="BaseParameterMap" type="cn.com.guilongkeji.zsst.pojo.SysUser">
+    <parameter resultMap="BaseResultMap" jdbcType="VARCHAR" property="username" />
+    <parameter resultMap="BaseResultMap" jdbcType="VARCHAR" property="password" />
+    <parameter resultMap="BaseResultMap" jdbcType="VARCHAR" property="salt" />
+    <parameter resultMap="BaseResultMap" jdbcType="VARCHAR" property="phone" />
+    <parameter resultMap="BaseResultMap" jdbcType="VARCHAR" property="roleIds" />
+    <parameter resultMap="BaseResultMap" jdbcType="TINYINT" property="locked" />
+  </parameterMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, username, password, salt, phone, role_ids, locked
+  </sql>
+  <sql id="BaseExcludeId">
+    username, password, salt, phone, role_ids, locked
+  </sql>
+  <sql id="content">
+    #{username},#{password},#{salt},#{phone},#{roleIds},#{locked}
+  </sql>
+  <select id="findByUsername" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from sys_user where username = #{username}
+  </select>
+  <select id="getByUsernameAndPassword" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from sys_user where username = #{param1} and password = #{param2}
+  </select>
+  <insert id="addSysUser" parameterMap="BaseParameterMap">
+    insert into sys_user (<include refid="BaseExcludeId"></include>) values (<include refid="content"></include>)
+  </insert>
+  <update id="updateSysUser" parameterMap="BaseParameterMap">
+    update set sys_user values (<include refid="content"></include>) where id = #{sysUser.id}
+  </update>
+</mapper>

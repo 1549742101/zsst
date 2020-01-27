@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.guilongkeji.zsst.mapper.CartMapper">
+  <resultMap id="BaseResultMap" type="cn.com.guilongkeji.zsst.pojo.Cart">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="dish_id" jdbcType="INTEGER" property="dishId" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, time, status, user_id, dish_id, count
+  </sql>
+</mapper>
