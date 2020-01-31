@@ -2,7 +2,7 @@ package cn.com.guilongkeji.zsst.pojo;
 
 import javax.persistence.*;
 /**
- * 功能描述
+ * 功能描述 评价
  * @author xgl
  * @date 2020/1/5
  */

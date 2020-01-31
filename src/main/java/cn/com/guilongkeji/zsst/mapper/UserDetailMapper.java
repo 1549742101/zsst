@@ -34,10 +34,10 @@ public interface UserDetailMapper {
      * 功能描述 根据用户获取用户详细信息
      * @author xgl
      * @date 2020/1/13
-      * @param sysUser
+      * @param uid
      * @return cn.com.guilongkeji.zsst.pojo.UserDetail
      */
-    public UserDetail getUserDetailByUser(SysUser sysUser);
+    public UserDetail getUserDetailByUser(Integer uid);
     /**
      * 功能描述 获取所有用户认证信息
      * @author xgl

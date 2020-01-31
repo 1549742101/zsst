@@ -55,6 +55,14 @@ public class Active {
     private Byte status;
 
     /**
+     * 活动图片
+     */
+    private Integer img;
+    /**
+     * 活动菜品
+     */
+    private String dish;
+    /**
      * 获取活动编号
      *
      * @return id - 活动编号

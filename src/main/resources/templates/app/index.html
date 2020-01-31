@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>掌上食堂</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link th:href="@{app/css/public.css}" href="app/css/public.css" rel="stylesheet">
+    <link th:href="@{app/css/index.css}" href="app/css/public.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{webjars/jquery/3.4.1/jquery.min.js}" herf="webjars/jquery/3.4.1/jquery.min.js">
+</head>
+<body>
+<div class="content">
+    <div class="header ctt">
+        <p class="phone"><a th:href="@{about.html}">联系我们</a></p>
+    </div>
+    <div class="menu">
+        <div class="ctt">
+            <img class="logo" thsrc="img/logo.png"  alt="logo" width="14%" height="40px">
+            <div class="menu_content">
+                <ul class="ul_menu">
+                    <li class="active"><a href="/index">首页</a></li>
+                    <li><a href="/findDish">觅食</a></li>
+                    <li><a href="/order">订单</a></li>
+                    <li><a href="/myCount">账户</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form ctt">
+        <div class="form_content">
+            <ul class="form_menu">
+                <li class="hello">亲，登录发现更多好货哦！</li>
+                <li>
+                    <ul class="form_menu1">
+                        <li><a class="login_in" data-toggle="modal" data-target="#login">【点击登录】</a></li>
+                    </ul>
+                    <ul class="form_menu2">
+                        <li><a class="refresh">【刷新页面】</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner ctt">
+        <ul class="banner_ul">
+            <li class="active"><img src="img/banner.jpg" alt=""></li>
+            <li><img src="img/banner.png" alt=""></li>
+            <li><img src="img/banner.png" alt=""></li>
+            <li><img src="img/banner.jpg" alt=""></li>
+        </ul>
+        <ul class="banner_ol">
+            <li class="active">
+                <p>油油鱼</p>
+            </li>
+            <li>
+                <p>油油鱼</p>
+            </li>
+            <li>
+                <p>油油鱼</p>
+            </li>
+            <li>
+                <p>油油鱼</p>
+            </li>
+        </ul>
+        <ul class="banner_on">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="message ctt bgb">
+        <div class="span_">
+            <img src="img/4.gif" class="title_img" width="215px" height="47px">
+            <div class="activity">
+                <ul class="act_ul">
+                    <li>
+                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
+                        <span>2019/11/11</span>
+                    </li>
+                    <li>
+                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
+                        <span>2019/11/11</span>
+                    </li>
+                    <li>
+                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
+                        <span>2019/11/11</span>
+                    </li>
+                    <li>
+                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
+                        <span>2019/11/11</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="shop ctt bgb">
+        <div class="span_">
+            <div class="shop_title_img"><img src="img/5.gif"></div>
+            <ul class="shop_content">
+                <li>
+                    <span><img src="img/2.jpg" alt=""></span>
+                    <div>
+
+                        <ul>
+                            <h2>老正香鸡排</h2>
+                            <li><name>地址：</name><value>新食堂一楼</value></li>
+                            <li><name>主打菜：</name><value>正香鸡排</value></li>
+                            <li><name>平均消费：</name><value>10</value></li>
+                            <li><name>最近上新</name><value>正香鸡排</value></li>
+                            <li><name>最新评价：</name><value>好吃</value></li>
+                            <li><name>近日活动：</name><value>无</value></li>
+                        </ul>
+                        <span>
+                            <svg width="160" height="160" viewBox="0 0 160 160"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="orange_red" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"></stop>
+                                        <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1"></stop>
+                                    </linearGradient>
+                                </defs>
+
+                                <circle cx="80"  cy="80"   r = "70"
+                                        fill="none"  stroke="#ccc" stroke-width="20"
+                                ></circle>
+                                <circle cx="0"  cy="0"   r = "70" class="myCircle" id="progressRound"
+                                        transform="translate(80,80) rotate(-90)"
+                                ></circle>
+                                <text x="0" y="0" fill="red" class="txt" id="txt"
+                                      transform="translate(80,80)"
+                                >0%</text>
+                                <text x="0" y="0" fill="#555" class="txt txt2"
+                                      transform="translate(80,100)"
+                                >好评度</text>
+                            </svg>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <span><img src="img/2.jpg" alt=""></span>
+                    <div>
+
+                        <ul>
+                            <h2>老正香鸡排</h2>
+                            <li><name>地址：</name><value>新食堂一楼</value></li>
+                            <li><name>主打菜：</name><value>正香鸡排</value></li>
+                            <li><name>平均消费：</name><value>10</value></li>
+                            <li><name>最近上新</name><value>正香鸡排</value></li>
+                            <li><name>最新评价：</name><value>好吃</value></li>
+                            <li><name>近日活动：</name><value>无</value></li>
+                        </ul>
+                        <span>
+                            <svg width="160" height="160" viewBox="0 0 160 160"
+                             xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="80"  cy="80"   r = "70"
+                                        fill="none"  stroke="#ccc" stroke-width="20"
+                                ></circle>
+                                <circle cx="0"  cy="0"   r = "70" class="myCircle" id="progressRound1"
+                                        transform="translate(80,80) rotate(-90)"
+                                ></circle>
+                                <text x="0" y="0" fill="red" class="txt" id="txt1"
+                                      transform="translate(80,80)"
+                                >0%</text>
+                                <text x="0" y="0" fill="#555" class="txt txt2"
+                                      transform="translate(80,100)"
+                                >好评度</text>
+                            </svg>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <p class="more_shop">
+                <a href="">更多店铺>>></a>
+            </p>
+        </div>
+    </div>
+    <div class="end">
+        <h1>贵龙科技有限公司</h1>
+    </div>
+</div>
+<!-- 按钮：用于打开模态框
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    打开模态框
+</button>-->
+
+<!-- 登录页面 -->
+<div class="modal fade" id="login">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">登录</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <form action="/login">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">用户名</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入用户名">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">密&ensp;&ensp;码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">验证码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入右侧验证码">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <a th:href="@{javascript:void(0)" class="getCode">点击获取验证码</a>
+                            </span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">登录</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#register">注册</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- 注册 -->
+<div class="modal fade" id="register">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">注册</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <form action="/register">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">用&ensp;户&ensp;名</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入用户名">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">密&ensp;&ensp;&ensp;&ensp;码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">确认密码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">手&ensp;机&ensp;号</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">验&ensp;证&ensp;码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入右侧验证码">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <a th:href="@{javascript:void(0)" class="getCode">点击获取验证码</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">验&ensp;证&ensp;码</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="请输入手机验证码">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <a th:href="@{javascript:void(0)" class="getCode">请输入验证码后点击获取</a>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">注册</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#login">登录</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="../../static/app/js/jquery-3.4.0.min.js"></script>
+<script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+<script src="../../static/app/js/index.js"></script>
+</body>
+</html>

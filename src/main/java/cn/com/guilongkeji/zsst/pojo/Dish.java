@@ -60,7 +60,6 @@ public class Dish {
      * 菜品存活状态
      */
     private Byte status;
-
     /**
      * 获取菜品编号
      *
@@ -247,5 +246,13 @@ public class Dish {
     }
     public boolean getBStatus(){
         return this.status>0?true:false;
+    }
+    public void setBActive(boolean active){
+        Byte zero = 0;
+        Byte one = 1;
+        this.active=active?one:zero;
+    }
+    public boolean getBActive(){
+        return this.active>0?true:false;
     }
 }

@@ -23,4 +23,28 @@
     -->
     id, user_id, details, code, type, method, time, price, value, assess, status
   </sql>
+  <sql id="BaseExcludeId">
+    user_id, details, code, type, method, time, price, value, assess, status
+  </sql>
+  <sql id="BaseValue">
+    #{userId},#{details},#{code},#{type},#{method},#{time},#{price},#{value},#{assess},#{status}
+  </sql>
+  <sql id="BaseUpdate">
+    user_id = #{userId},details = #{details},code=#{code},type=#{type},method=#{method},time=#{time},price=#{price},value=#{value},assess=#{assess},status=#{status}
+  </sql>
+  <insert id="addOrder">
+    insert into order(<include refid="BaseExcludeId"></include>) values (<include refid="BaseValue"></include>)
+  </insert>
+  <update id="updateOrder">
+    update set order (<include refid="BaseUpdate"></include>) where id = #{id}
+  </update>
+  <delete id="deleteOrderById">
+    delete order where id = #{id}
+  </delete>
+  <select id="getOrderByUserId" resultMap="BaseResultMap">
+    select * from order where user_id = #{uid}
+  </select>
+  <select id="getAllOrder" resultMap="BaseResultMap">
+    select * from order
+  </select>
 </mapper>

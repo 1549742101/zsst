@@ -2,6 +2,7 @@ package cn.com.guilongkeji.zsst.service;
 
 import cn.com.guilongkeji.zsst.pojo.Code;
 import cn.com.guilongkeji.zsst.pojo.SysUser;
+import cn.com.guilongkeji.zsst.pojo.UserDetail;
 
 import java.util.List;
 
@@ -87,5 +88,48 @@ public interface UserService {
      * @return cn.com.guilongkeji.zsst.pojo.Code
      */
     public Code getCodeByPhone(String phone);
+    /**
+     * 功能描述 根据用户编号获取用户详情
+     * @author xgl
+     * @date 2020/1/31
+      * @param uid
+     * @return cn.com.guilongkeji.zsst.pojo.UserDetail
+     */
+    public UserDetail getUserDetailByUserId(Integer uid);
+    /**
+     * 功能描述 添加用户详情
+     * @author xgl
+     * @date 2020/1/31
+      * @param userDetail
+     * @return void
+     */
+    public void addUserDetail(UserDetail userDetail);
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/1/31
+      * @param userDetail
+     * @return
+     */
+    public void updateUserDetail(UserDetail userDetail);
+    /**
+     * 功能描述 删除用户详情
+     * @author xgl
+     * @date 2020/1/31
+      * @param id
+     * @return void
+     */
+    @Deprecated
+    public void removeUserDetail(Integer id);
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/1/31
+      * @param userDetail
+     * @return void
+     */
+    public void deleteUserDetail(UserDetail userDetail);
+
+
 
 }

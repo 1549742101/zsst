@@ -16,4 +16,75 @@
     -->
     id, order_id, dish_id, count
   </sql>
+  <insert id="addOrderDetail">
+    insert into order_detail (order_id, dish_id, count) values (#{orderId}, #{dishId}, #{count})
+  </insert>
+  <insert id="addAllOrderDetail">
+    insert into order_detail (order_id, dish_id, count) values
+    <foreach collection="list" item="i" separator=",">
+      (#{i.orderId}, #{i.dishId}, #{i.count})
+    </foreach>
+  </insert>
+  <update id="updateOrderDetail">
+    update set order_detail(order_id = #{orderId},dish_id = #{dishId},count = #{count}) where id = #{id}
+  </update>
+  <update id="updateAllOrderDetail">
+    <foreach collection="list" item="i" separator=";">
+      update set order_detail(order_id = #{i.orderId},dish_id = #{i.dishId},count = #{i.count}) where id = #{i.id}
+    </foreach>
+  </update>
+  <delete id="removeOrderDetail">
+    delete order_detail where id = #{id}
+  </delete>
+  <delete id="removeAllOrderDetail">
+    delete order_detail where id in (
+    <foreach collection="list" item="i" separator=",">
+     i
+    </foreach>)
+  </delete>
+    <delete id="removeOrderDetailByOrder">
+      delete order_detail where id in (select id order_detail where order_id = #{id} )
+    </delete>
+    <select id="getAllOrderDetail" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from order_detail
+  </select>
+  <select id="getOrderDetailByOrderId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from order_detail where order_id = #{oid}
+  </select>
+  <select id="getOrderDetailByDish" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from order_detail where dish_id = #{did}
+  </select>
+  <select id="getOrderDetailById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from order_detail where id = #{id}
+  </select>
+  <select id="getOrderDetailByAllDish" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from order_detail where dish_id in (
+    <foreach collection="list" item="i" separator=",">
+    i
+    </foreach>)
+  </select>
+  <select id="getOrderDetailDtoByOrderId" resultMap="OrderDetailDto">
+    select
+    o.id as oid, order_id, dish_id, count
+    (d.*)
+    from order_detail as o join dish as d on o.dish_id = d.id where o.order_id = #{oid}
+  </select>
+  <resultMap id="OrderDetailDto" type="cn.com.guilongkeji.zsst.dto.OrderDetailDto">
+    <id property="id" jdbcType="INTEGER" column="oid"></id>
+    <result property="count" jdbcType="INTEGER" column="count"></result>
+    <result property="dishId" jdbcType="INTEGER" column="dish_id"></result>
+    <result property="orderId" jdbcType="INTEGER" column="order_id"></result>
+    <association property="dish" column="dish_id" javaType="cn.com.guilongkeji.zsst.pojo.Dish">
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="money" jdbcType="DECIMAL" property="money" />
+      <result column="img" jdbcType="INTEGER" property="img" />
+      <result column="sales" jdbcType="INTEGER" property="sales" />
+      <result column="sale" jdbcType="INTEGER" property="sale" />
+      <result column="praise" jdbcType="DECIMAL" property="praise" />
+      <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+      <result column="active" jdbcType="TINYINT" property="active" />
+      <result column="status" jdbcType="TINYINT" property="status" />
+    </association>
+  </resultMap>
 </mapper>

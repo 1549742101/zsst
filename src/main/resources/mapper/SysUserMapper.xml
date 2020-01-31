@@ -39,10 +39,26 @@
   <select id="getByUsernameAndPassword" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include> from sys_user where username = #{param1} and password = #{param2}
   </select>
+  <select id="getAllUser" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from sys_user
+  </select>
   <insert id="addSysUser" parameterMap="BaseParameterMap">
     insert into sys_user (<include refid="BaseExcludeId"></include>) values (<include refid="content"></include>)
   </insert>
-  <update id="updateSysUser" parameterMap="BaseParameterMap">
-    update set sys_user values (<include refid="content"></include>) where id = #{sysUser.id}
+    <insert id="addAllSysUser">
+      insert into sys_user(<include refid="BaseExcludeId"></include>) values
+      <foreach collection="list" separator="," item="i">
+        (#{i.username},#{i.password},#{i.salt},#{i.phone},#{i.roleIds},#{i.locked})
+      </foreach>
+    </insert>
+    <update id="updateSysUser" parameterMap="BaseParameterMap">
+    update set sys_user (username=#{username},password=#{password},salt=#{salt},phone=#{phone},role_ids=#{roleIds},locked=#{locked}) where id = #{id}
+  </update>
+  <update id="updateAllSysUser">
+    <foreach collection="list" item="i" separator=",">
+      update set sys_user values (
+      username=#{i.username},password=#{i.password},salt=#{i.salt},phone=#{i.phone},role_ids=#{i.roleIds},locked=#{i.locked}) where id = #{i.id}
+      )
+    </foreach>
   </update>
 </mapper>

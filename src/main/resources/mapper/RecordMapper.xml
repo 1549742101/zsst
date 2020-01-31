@@ -17,4 +17,14 @@
     -->
     id, shop_id, user_id, time, status
   </sql>
+  <insert id="addRecord">
+    insert into record
+  </insert>
+  <insert id="addAllRecord"></insert>
+  <update id="updateRecord"></update>
+  <update id="updateRecords"></update>
+  <delete id="deleteRecords"></delete>
+  <delete id="deleteRecord"></delete>
+  <select id="getRecordByUserId" resultType="cn.com.guilongkeji.zsst.pojo.Record"></select>
+  <select id="getAllRecord" resultType="cn.com.guilongkeji.zsst.pojo.Record"></select>
 </mapper>

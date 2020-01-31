@@ -2,9 +2,11 @@ package cn.com.guilongkeji.zsst.service.impl;
 
 import cn.com.guilongkeji.zsst.mapper.CodeMapper;
 import cn.com.guilongkeji.zsst.mapper.SysUserMapper;
+import cn.com.guilongkeji.zsst.mapper.UserDetailMapper;
 import cn.com.guilongkeji.zsst.pojo.Code;
 import cn.com.guilongkeji.zsst.pojo.SysRole;
 import cn.com.guilongkeji.zsst.pojo.SysUser;
+import cn.com.guilongkeji.zsst.pojo.UserDetail;
 import cn.com.guilongkeji.zsst.service.UserService;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -26,6 +28,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Resource
     private SysUserMapper userMapper;
+    @Resource
+    private UserDetailMapper userDetailMapper;
     @Resource
     private CodeMapper codeMapper;
 
@@ -57,18 +61,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateSysUser(SysUser sysUser) {
-
+        String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+        String encodedPassword = new SimpleHash("md5",sysUser.getPassword(),salt,2).toString();
+        sysUser.setPassword(encodedPassword);
+        sysUser.setRoleIds("1");
+        sysUser.setBLocked(true);
+        sysUser.setSalt(salt);
         userMapper.updateSysUser(sysUser);
     }
 
     @Override
     public List<SysUser> getAllSysUser() {
-        return null;
+        return userMapper.getAllUser();
     }
 
     @Override
     public void registerAllSysUser(List<SysUser> sysUserList) {
-
+        userMapper.addAllSysUser(sysUserList);
     }
 
 
@@ -80,5 +89,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public Code getCodeByPhone(String phone) {
         return codeMapper.getCodeByPhone(phone);
+    }
+
+    @Override
+    public UserDetail getUserDetailByUserId(Integer uid) {
+        return userDetailMapper.getUserDetailByUser(uid);
+    }
+
+    @Override
+    public void addUserDetail(UserDetail userDetail) {
+        userDetailMapper.addUserDetail(userDetail);
+    }
+
+    @Override
+    public void updateUserDetail(UserDetail userDetail) {
+        userDetailMapper.updateUserDetail(userDetail);
+    }
+
+    @Override
+    public void removeUserDetail(Integer id) {
+        userDetailMapper.removeUserDetail(id);
+    }
+
+    @Override
+    public void deleteUserDetail(UserDetail userDetail) {
+        userDetail.setCode("400");
+        userDetailMapper.updateUserDetail(userDetail);
     }
 }

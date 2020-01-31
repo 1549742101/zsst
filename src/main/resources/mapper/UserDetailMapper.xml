@@ -19,10 +19,26 @@
     -->
     id, avatar, name, method, img, code, user_id
   </sql>
-  <insert id="addUserDetail"></insert>
-  <update id="updateUserDetail"></update>
-  <delete id="removeUserDetail"></delete>
-  <delete id="removeUserDetails"></delete>
-  <select id="getAllUserDetail" resultType="cn.com.guilongkeji.zsst.pojo.UserDetail"></select>
-  <select id="getUserDetailByUser" resultType="cn.com.guilongkeji.zsst.pojo.UserDetail"></select>
+  <insert id="addUserDetail">
+    insert into user_detail(avatar, name, method, img, code, user_id) values
+    (#{avatar},#{name},#{method},#{img},#{code},#{userId})
+  </insert>
+  <update id="updateUserDetail">
+    update set user_detail(avatar=#{avatar}, name=#{name}, method=#{method}, img=#{img}, code=#{code}, user_id=#{userId})
+  </update>
+  <delete id="removeUserDetail">
+    delete user_detail where id = #{id}
+  </delete>
+  <delete id="removeUserDetails">
+    delete user_detail where id in
+    (<foreach collection="list" item="i" separator=",">
+    i
+  </foreach> )
+  </delete>
+  <select id="getAllUserDetail" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from user_detail
+  </select>
+  <select id="getUserDetailByUser" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from user_detail where user_id = #{uid}
+  </select>
 </mapper>

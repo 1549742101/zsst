@@ -14,9 +14,53 @@
     <result column="history" jdbcType="INTEGER" property="history" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--
-      WARNING - @mbg.generated
-    -->
     id, avatar, name, dish_id, status, region_id, history
   </sql>
+  <sql id="BaseExcludeId">
+    avatar, name, dish_id, status, region_id, history
+  </sql>
+  <sql id="BaseInsert">
+    #{avatar}, #{name}, #{dishId}, #{status}, #{regionId}, #{history}
+  </sql>
+  <sql id="BaseInserts">
+    #{i.avatar}, #{i.name}, #{i.dishId}, #{i.status}, #{i.regionId}, #{i.history}
+  </sql>
+  <sql id="BaseUpdate">
+    avatar=#{avatar}, name=#{name},dish_id= #{dishId}, status=#{status},region_id= #{regionId}, history=#{history}
+  </sql>
+  <sql id="BaseUpdates">
+    avatar=#{i.avatar},name= #{i.name}, dish_id=#{i.dishId},status= #{i.status}, region_id=#{i.regionId}, history= #{i.history}
+  </sql>
+  <insert id="addShop">
+    insert into shop(<include refid="BaseExcludeId"></include>) values (<include refid="BaseInsert"></include>)
+  </insert>
+  <insert id="addAllShop">
+    insert into shop(<include refid="BaseExcludeId"></include>) values
+    <foreach collection="list" item="i" separator=",">
+      (<include refid="BaseInserts"></include>)
+    </foreach>
+  </insert>
+  <update id="updateShop">
+    update set shop(<include refid="BaseUpdate"></include>) where id = #{id}
+  </update>
+  <update id="updateShops">
+    <foreach collection="list" separator=";" item="i">
+      update set shop(<include refid="BaseUpdates"></include>) where id = #{i.id}
+    </foreach>
+  </update>
+  <delete id="removeShop">
+    delete shop where id = #{id}
+  </delete>
+  <delete id="removeShops">
+    delete shop where id in (
+    <foreach collection="list" item="i" separator=",">
+      i
+    </foreach>)
+  </delete>
+  <select id="getShopById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> shop where id = #{id}
+  </select>
+  <select id="getAllShop" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> shop
+  </select>
 </mapper>

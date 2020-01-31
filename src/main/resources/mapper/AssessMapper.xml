@@ -20,4 +20,37 @@
     -->
     id, user_id, dish_id, order_id, text, star, img, status
   </sql>
+  <sql id="BaseExcludeId">
+    user_id, dish_id, order_id, text, star, img, status
+  </sql>
+  <sql id="BaseInsert">
+    #{userId},#{dishId},#{orderId},#{text},#{star},#{img},#{status}
+  </sql>
+  <sql id="BaseUpdate">
+    user_id=#{userId}, dish_id=#{dishId}, order_id=#{orderId}, text=#{text}, star=#{star}, img=#{img}, status=#{status}
+  </sql>
+  <insert id="addAssess">
+    insert into assess(<include refid="BaseExcludeId"></include>) values (<include refid="BaseInsert"></include>)
+  </insert>
+  <update id="updateAssess">
+    update set assess(<include refid="BaseUpdate"></include>) where id = #{id}
+  </update>
+  <delete id="removeAssess">
+    delete assess where id = #{id}
+  </delete>
+  <select id="getAllAssess" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from assess
+  </select>
+  <select id="getAssessById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from assess where id = #{id}
+  </select>
+  <select id="getAssessByUserId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from assess where user_id = #{uid}
+  </select>
+  <select id="getAssessByOrderId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from assess where order_id = #{oid}
+  </select>
+  <select id="getAssessByStatus" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from assess where status = 1
+  </select>
 </mapper>

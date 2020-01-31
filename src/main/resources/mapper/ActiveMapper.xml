@@ -13,11 +13,73 @@
     <result column="cause" jdbcType="VARCHAR" property="cause" />
     <result column="term" jdbcType="DECIMAL" property="term" />
     <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="img" jdbcType="INTEGER" property="img"></result>
+    <result column="dish" jdbcType="VARCHAR" property="dish"></result>
   </resultMap>
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbg.generated
     -->
-    id, shop_id, name, start_time, end_time, cause, term, status
+    id, shop_id, name, start_time, end_time, cause, term, status, img, dish
   </sql>
+  <sql id="BaseExcludeId">
+    shop_id, name, start_time, end_time, cause, term, status, img, dish
+  </sql>
+  <sql id="BaseUpdate">
+    shop_id = #{shopId}, name = #{name}, start_time = #{startTime}, end_time = #{endTime},
+    cause = #{cause},term = #{term}, status = #{status}, img = #{img}, dish = #{dish}
+  </sql>
+  <sql id="BaseUpdates">
+     shop_id = #{i.shopId}, name = #{i.name}, start_time = #{i.startTime}, end_time = #{i.endTime},
+    cause = #{i.cause},term = #{i.term}, status = #{i.status}, img = #{i.img}, dish = #{i.dish}
+  </sql>
+  <sql id="BaseInsert">
+    #{shopId}, #{name}, #{startTime}, #{endTime}, #{cause}, #{term}, #{status}, #{img}, #{dish}
+  </sql>
+  <sql id="BaseInserts">
+    #{i.shopId}, #{i.name}, #{i.startTime}, #{i.endTime}, #{i.cause}, #{i.term}, #{i.status}, #{i.img}, #{i.dish}
+  </sql>
+  <insert id="addActive">
+    insert into active (<include refid="BaseExcludeId"></include>) values (<include refid="BaseInsert"></include>)
+  </insert>
+  <insert id="addAllActive">
+    insert into active (<include refid="BaseExcludeId"></include>) values
+    <foreach collection="list" item="i" separator=",">
+      (<include refid="BaseInserts"></include>)
+    </foreach>
+  </insert>
+  <update id="updateActive">
+    update set active(<include refid="BaseUpdate"></include>) where id = #{id}
+  </update>
+  <update id="updateAllActive">
+    <foreach collection="list" item="i" separator=";">
+      update set active(<include refid="BaseUpdates"></include>) where id = #{i.id}
+    </foreach>
+  </update>
+  <delete id="removeActive">
+    delete active where id = #{id}
+  </delete>
+  <delete id="removeAllActive">
+    delete active where id in (
+    <foreach collection="list" item="i" separator=",">
+      i
+    </foreach>
+    )
+  </delete>
+  <select id="getAllActive" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from active
+  </select>
+  <select id="getActiveByShop" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from active where shop_id = #{shopId}
+  </select>
+  <select id="getActiveByStatus" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from active where status = 1;
+  </select>
+  <select id="getActiveById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from active where id = #{id}
+
+  </select>
+  <select id="getDishByActive" resultType="cn.com.guilongkeji.zsst.pojo.Dish">
+    select * from dish where id in (select dish from active where status = 1)
+  </select>
 </mapper>

@@ -53,3 +53,15 @@
 1578792836971|49|statement|connection 0|INSERT INTO code(phone, code, time) VALUES (?, ?, now())|INSERT INTO code(phone, code, time) VALUES ('13272950110', '744497', now())
 1578929814413|23|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
 1578929852280|130|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580089050847|125|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204172655|30|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204226866|32|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204279797|31|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204352650|34|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204356549|92|statement|connection 0|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values (              ?,?,?,?,?,?,?,?,?      ,        ?,?,?,?,?,?,?,?,?           )|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values (              '111',12.2,1,1,0,0,1,0,1      ,        '112',12.2,1,1,0,0,1,0,1           )
+1580204575621|36|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204579561|142|statement|connection 0|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values (      ?,?,?,?,?,?,?,?,?    )|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values (      '111',12.2,1,1,0,0,1,0,1    )
+1580204669618|35|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204673662|72|statement|connection 0|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values (      ?,?,?,?,?,?,?,?,?    )|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values (      '111',12.2,1,1,0,0,1,0,1    )
+1580204688049|30|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1580204692379|74|statement|connection 0|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values             (?,?,?,?,?,?,?,?,?)      ,       (?,?,?,?,?,?,?,?,?)|insert into dish (      name, money, img, sales, sale, praise, shop_id, active, status    ) values             ('111',12.2,1,1,0,0,1,0,1)      ,       ('112',12.2,1,1,0,0,1,0,1)

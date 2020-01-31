@@ -1,9 +1,14 @@
 package cn.com.guilongkeji.zsst.controller;
 
+import cn.com.guilongkeji.zsst.dto.MainDto;
+import cn.com.guilongkeji.zsst.mapper.UserDetailMapper;
 import cn.com.guilongkeji.zsst.pojo.Code;
+import cn.com.guilongkeji.zsst.pojo.Img;
 import cn.com.guilongkeji.zsst.pojo.SysUser;
+import cn.com.guilongkeji.zsst.pojo.UserDetail;
 import cn.com.guilongkeji.zsst.result.Result;
 import cn.com.guilongkeji.zsst.result.ResultFactory;
+import cn.com.guilongkeji.zsst.service.MainService;
 import cn.com.guilongkeji.zsst.service.UserService;
 import cn.com.guilongkeji.zsst.utils.TencentSms;
 import org.apache.shiro.SecurityUtils;
@@ -20,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Description
@@ -33,6 +40,8 @@ import javax.annotation.Resource;
 public class UserController {
     @Resource
     private UserService userService;
+    @Resource
+    private MainService mainService;
     private StringBuffer message=new StringBuffer("");
     @ResponseBody
     @PostMapping("/login")
@@ -81,6 +90,20 @@ public class UserController {
         subject.logout();
         message = new StringBuffer("成功登出");
         return ResultFactory.buildSuccessResult(message);
+    }
+
+    @ResponseBody
+    @PostMapping("/index")
+    public MainDto getIndex(){
+        MainDto mainDto = new MainDto();
+        List<Integer> list =new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        mainDto.setImgList(mainService.getImgByAllId(list));
+
+        return mainDto;
     }
 
     @ResponseBody

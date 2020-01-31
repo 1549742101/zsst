@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.guilongkeji.zsst.mapper.ImgMapper">
+    <resultMap id="BaseResultMap" type="cn.com.guilongkeji.zsst.pojo.Img">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, url
+    </sql>
+    <insert id="addImg">
+        insert into img (name,url) values (#{name},#{url})
+    </insert>
+    <update id="updateImg">
+        update set img(name=#{name},#{url})
+    </update>
+    <delete id="removeImg">
+        delete shop where id = #{id}
+    </delete>
+    <select id="getImgById" resultMap="BaseResultMap"></select>
+    <select id="getImgByAllId" resultMap="BaseResultMap"></select>
+</mapper>

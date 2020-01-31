@@ -22,4 +22,47 @@
     -->
     id, name, money, img, sales, sale, praise, shop_id, active, status
   </sql>
+  <sql id="BaseExcludeId">
+    name, money, img, sales, sale, praise, shop_id, active, status
+  </sql>
+  <sql id="BaseInsert">
+    #{name},#{money},#{img},#{sales},#{sale},#{praise},#{shopId},#{active},#{status}
+  </sql>
+  <insert id="addDish">
+    insert into dish (<include refid="BaseExcludeId"></include>) values (<include refid="BaseInsert"></include>)
+  </insert>
+  <insert id="addAllDish">
+    insert into dish (<include refid="BaseExcludeId"></include>) values
+    <foreach collection="list" item="i" separator=",">
+      (#{i.name},#{i.money},#{i.img},#{i.sales},#{i.sale},#{i.praise},#{i.shopId},#{i.active},#{i.status})
+    </foreach>
+  </insert>
+  <update id="updateDish">
+    update set ( name = #{name},money= #{money},img = #{img},sales = #{sales},sale = #{sale},praise = #{praise},shop_id = #{shopId},active = #{active},status = #{status})
+    where id = #{id}
+  </update>
+  <update id="updateAllDish">
+    <foreach collection="list" item="i" separator=";">
+      update set (name = #{i.name},money= #{i.money},img = #{i.img},sales = #{i.sales},sale = #{i.sale},praise = #{i.praise},shop_id = #{i.shopId},active = #{i.active},status = #{i.status})
+      where id = i.id
+    </foreach>
+  </update>
+  <delete id="removeDish">
+    delete dish where id = #{id}
+  </delete>
+  <delete id="removeDishes">
+      delete dish where id in (
+      <foreach collection="list" item="i" separator=",">
+      i
+      </foreach>)
+  </delete>
+  <select id="getAllDish" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from dish
+  </select>
+  <select id="getDishByShop" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from dish where shop_id = #{sid}
+  </select>
+  <select id="getDishById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from dish where id = #{id}
+  </select>
 </mapper>
