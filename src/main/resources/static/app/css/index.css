@@ -67,11 +67,6 @@ body{
 	transition: all 0.5s;
 	overflow: hidden;
 }
-@media all and (min-width: 768px){
-	.banner_ul,.banner_ul>li>img{
-		height: 500px;
-	}
-}
 .banner_ul>li{
 	display: none;
 }
@@ -181,13 +176,13 @@ body{
 	position: relative;
 }
 .shop_content>li{
-	background: url("../img/2.png");
+	background: url("/app/img/background.png");
 	width: 80%;
 	border:dashed 3px #676262;
 	margin: 40px auto;
 	min-height: 250px;
 }
-.shop_content>li>span>img{
+.shop_content>li>span>a>img{
 	float: left;
 	margin-left: 50px;
 	margin-top: 50px;

@@ -79,4 +79,12 @@ public interface ShopMapper{
      */
     public List<Shop> getAllShop();
 
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/10
+      * @param
+     * @return java.util.List<cn.com.guilongkeji.zsst.pojo.Shop>
+     */
+    public List<Shop> getHotsShop();
 }

@@ -42,6 +42,25 @@
   <select id="getAllUser" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include> from sys_user
   </select>
+    <select id="getAllUserByIds" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"></include> from sys_user where id
+      not in (
+      <foreach collection="list" item="i" separator=",">
+        #{i}
+      </foreach>
+      )
+    </select>
+  <select id="getAllUserExcludeIds" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from sys_user where id
+    in (
+    <foreach collection="list" item="i" separator=",">
+      #{i}
+    </foreach>
+    )
+  </select>
+  <select id="getUserByRolesOne" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from sys_user where role_ids = "1"
+  </select>
   <insert id="addSysUser" parameterMap="BaseParameterMap">
     insert into sys_user (<include refid="BaseExcludeId"></include>) values (<include refid="content"></include>)
   </insert>

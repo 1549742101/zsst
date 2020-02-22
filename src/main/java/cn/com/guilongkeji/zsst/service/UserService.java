@@ -130,6 +130,21 @@ public interface UserService {
      */
     public void deleteUserDetail(UserDetail userDetail);
 
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/9
+      * @param username
+     * @return java.util.List<java.lang.String>
+     */
+    public List<String> getRolesByUser(String username);
 
-
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/9
+     * @param username
+     * @return java.util.List<java.lang.String>
+     */
+    public List<String> getPermissionsByUser(String username);
 }

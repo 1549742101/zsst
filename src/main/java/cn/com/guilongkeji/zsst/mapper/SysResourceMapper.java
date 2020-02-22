@@ -58,9 +58,16 @@ public interface SysResourceMapper  {
      * 功能描述 根据权限获取资源
      * @author xgl
      * @date 2020/1/13
-      * @param sysRole
+      * @param list
      * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysResource>
      */
-    public List<SysResource> getSysResourceByRole(SysRole sysRole);
+    public List<SysResource> getSysResourceByAll(List<Integer> list);
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/9
+      * @param
+     * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysResource>
+     */
     public List<SysResource> getAllSysResource();
 }

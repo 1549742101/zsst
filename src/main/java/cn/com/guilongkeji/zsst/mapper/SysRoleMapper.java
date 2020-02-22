@@ -58,10 +58,10 @@ public interface SysRoleMapper {
      * 功能描述 根据用户获取角色
      * @author xgl
      * @date 2020/1/13
-      * @param sysUser
+      * @param ids
      * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysRole>
      */
-    public List<SysRole> getRoleByUser(SysUser sysUser);
+    public List<SysRole> getRoleByAll(List<Integer> ids);
     /**
      * 功能描述 获取所有角色
      * @author xgl

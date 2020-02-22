@@ -12,14 +12,14 @@
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
     <result column="parent_ids" jdbcType="VARCHAR" property="parentIds" />
     <result column="permission" jdbcType="VARCHAR" property="permission" />
-    <result column=" available" jdbcType="TINYINT" property="available" />
+    <result column="available" jdbcType="TINYINT" property="available" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, type, priority, parent_id, parent_ids, permission, available
+    id, `name`, `type`, priority, parent_id, parent_ids, permission, `available`
   </sql>
 
   <sql id="Base_Column_Sql">
-    name, type, priority, parent_id, parent_ids, permission, available
+    `name`, `type`, priority, parent_id, parent_ids, permission, `available`
   </sql>
 
   <sql id="Base_Column_Java">
@@ -63,8 +63,11 @@
     select <include refid="Base_Column_List"></include> from sys_resource where id=#{id}
   </select>
 
-  <select id="getSysResourceByRole" resultMap="BaseResultMap" parameterType="cn.com.guilongkeji.zsst.pojo.SysRole">
-    select <include refid="Base_Column_List"></include> from sys_resource where id in (#{resourceIds})
+  <select id="getSysResourceByAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from sys_resource where id in (
+    <foreach collection="list" separator="," item="i">
+    #{i}
+    </foreach>)
   </select>
 
   <select id="getAllSysResource" resultMap="BaseResultMap" >

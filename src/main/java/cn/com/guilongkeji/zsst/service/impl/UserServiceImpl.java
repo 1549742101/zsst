@@ -1,20 +1,15 @@
 package cn.com.guilongkeji.zsst.service.impl;
 
-import cn.com.guilongkeji.zsst.mapper.CodeMapper;
-import cn.com.guilongkeji.zsst.mapper.SysUserMapper;
-import cn.com.guilongkeji.zsst.mapper.UserDetailMapper;
-import cn.com.guilongkeji.zsst.pojo.Code;
-import cn.com.guilongkeji.zsst.pojo.SysRole;
-import cn.com.guilongkeji.zsst.pojo.SysUser;
-import cn.com.guilongkeji.zsst.pojo.UserDetail;
+import cn.com.guilongkeji.zsst.mapper.*;
+import cn.com.guilongkeji.zsst.pojo.*;
 import cn.com.guilongkeji.zsst.service.UserService;
+import cn.com.guilongkeji.zsst.utils.StringUtils;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +27,10 @@ public class UserServiceImpl implements UserService {
     private UserDetailMapper userDetailMapper;
     @Resource
     private CodeMapper codeMapper;
+    @Resource
+    private SysRoleMapper sysRoleMapper;
+    @Resource
+    private SysResourceMapper sysResourceMapper;
 
     @Override
     public boolean isExist(String username) {
@@ -115,5 +114,34 @@ public class UserServiceImpl implements UserService {
     public void deleteUserDetail(UserDetail userDetail) {
         userDetail.setCode("400");
         userDetailMapper.updateUserDetail(userDetail);
+    }
+
+    @Override
+    public List<String> getRolesByUser(String username) {
+        SysUser sysUser = this.getUserByName(username);
+        List<Integer> list = StringUtils.StringToList(sysUser.getRoleIds());
+        List<SysRole> sysRoles = sysRoleMapper.getRoleByAll(list);
+        List<String> stringList = new ArrayList<>();
+        for (SysRole i:sysRoles){
+            stringList.add(i.getRole());
+        }
+        return stringList;
+    }
+
+    @Override
+    public List<String> getPermissionsByUser(String username) {
+        SysUser sysUser = this.getUserByName(username);
+        List<Integer> list = StringUtils.StringToList(sysUser.getRoleIds());
+        List<SysRole> sysRoles = sysRoleMapper.getRoleByAll(list);
+        list.clear();
+        for (SysRole sysRole : sysRoles){
+            list.addAll(StringUtils.StringToList(sysRole.getResourceIds()));
+        }
+        List<SysResource> list1 = sysResourceMapper.getSysResourceByAll(list);
+        List<String> stringList = new ArrayList<>();
+        for (SysResource sysResource:list1){
+            stringList.add(sysResource.getPermission());
+        }
+        return stringList;
     }
 }

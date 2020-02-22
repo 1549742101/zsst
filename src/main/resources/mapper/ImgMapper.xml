@@ -7,19 +7,32 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="type" jdbcType="TINYINT" property="type" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, name, url
+        id, name, url , description , type
     </sql>
     <insert id="addImg">
-        insert into img (name,url) values (#{name},#{url})
+        insert into img (name, url , description , type ) values (#{name},#{url},#{description},#{type})
     </insert>
     <update id="updateImg">
-        update set img(name=#{name},#{url})
+        update set img(name=#{name},url=#{url},description=#{description},type=#{type},)
     </update>
     <delete id="removeImg">
-        delete shop where id = #{id}
+        delete img where id = #{id}
     </delete>
-    <select id="getImgById" resultMap="BaseResultMap"></select>
-    <select id="getImgByAllId" resultMap="BaseResultMap"></select>
+    <select id="getImgById" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include> from img where id = #{id}
+    </select>
+    <select id="getImgByAllId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include> from img where id
+        in
+        (<foreach collection="list" item="i" separator=",">
+        #{i}
+    </foreach>)
+    </select>
+    <select id="getImgByUrl" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include> from img where url = #{url} and type = 1
+    </select>
 </mapper>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>掌上食堂-首页</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link th:href="@{/app/css/public.css}" href="/app/css/public.css" rel="stylesheet">
+    <link th:href="@{/app/css/index.css}" href="/app/css/public.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}"href="/webjars/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="content">
+    <div class="header ctt">
+        <p class="phone"><a th:href="@{/about.html}">联系我们</a></p>
+    </div>
+    <div class="menu">
+        <div class="ctt">
+            <img class="logo" th:src="@{/app/img/logo.png}"  alt="logo" width="14%" height="40px">
+            <div class="menu_content">
+                <ul class="ul_menu">
+                    <li class="active"><a href="index.html" th:href="@{${menuUrl.get('首页')}}">首页</a></li>
+                    <li><a href="findDish.html" th:href="@{${menuUrl.get('觅食')}}">觅食</a></li>
+                    <li><a href="order.html" th:href="@{${menuUrl.get('购物车')}}">购物车</a></li>
+                    <li><a href="myCount.html" th:href="@{${menuUrl.get('我的')}}">我的</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form ctt">
+        <div class="form_content">
+            <ul class="form_menu" th:if="${username}!=null">
+                <li class="hello">尊敬的 <a href="myCount.html" th:href="@{${menuUrl.get('我的')}}" th:text="${username}"></a>用户，欢迎您光临本网站！</li>
+                <li>
+                    <ul class="form_menu1">
+                        <li><a href="javascript:void(0)" class="login_in" data-toggle="modal" data-target="#login">【点击退出】</a></li>
+                    </ul>
+                    <ul class="form_menu2">
+                        <li><a href="javascript:void(0)" class="refresh">【刷新页面】</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script th:src="@{/app/js/index.js}"></script>
+</body>
+</html>

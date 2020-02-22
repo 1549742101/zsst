@@ -40,18 +40,21 @@
     </foreach>
   </insert>
   <update id="updateRole" parameterType="cn.com.guilongkeji.zsst.pojo.SysRole">
-    update set <include refid="Base_Column_Update"></include> where id = #{id}
+    update set sys_role <include refid="Base_Column_Update"></include> where id = #{id}
   </update>
   <update id="updateRoles" parameterType="cn.com.guilongkeji.zsst.pojo.SysRole">
     <foreach collection="sysRoleList" item="item" separator=";">
-      update set i<include refid="Base_Column_Update_Item"></include>) where id = #{item.id}
+      update set sys_role <include refid="Base_Column_Update_Item"></include>) where id = #{item.id}
     </foreach>
   </update>
   <select id="getRoleById" resultMap="BaseResultMap" parameterType="integer">
     select <include refid="Base_Column_List"></include> from sys_role where id = #{id}
   </select>
-  <select id="getRoleByUser" resultMap="BaseResultMap" parameterType="cn.com.guilongkeji.zsst.pojo.SysUser">
-    select <include refid="Base_Column_List"></include> from sys_role where id in #{roleIds}
+  <select id="getRoleByAll" resultMap="BaseResultMap" parameterType="cn.com.guilongkeji.zsst.pojo.SysUser">
+    select <include refid="Base_Column_List"></include> from sys_role where id in
+    <foreach collection="list" item="i" separator=",">
+      #{i}
+    </foreach>
   </select>
   <select id="getAllRole" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include> from sys_role

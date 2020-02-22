@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>掌上食堂-后台登录</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+    <link rel="shortcut icon" th:href="@{favicon.ico}" type="image/x-icon" />
+    <link rel="stylesheet" th:href="@{admin/css/font.css}">
+    <link rel="stylesheet" th:href="@{admin/css/xadmin.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" src="webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script th:src="@{admin/lib/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{admin/js/xadmin.js}"></script>
+
+</head>
+<body class="login-bg">
+    
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">掌上食堂-后台登录</div>
+        <div id="darkbannerwrap"></div>
+        
+        <form method="post" class="layui-form" action="/admin/login">
+            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input name="rememberMe" lay-verify="required" type="checkbox" class="layui-input">记住我
+            <hr class="hr15">
+            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+    </div>
+
+    <script>
+        $(function  () {
+            layui.use('form', function(){
+              let form = layui.form;
+              // layer.msg(, function(){
+              //   //关闭后的操作
+              //   });
+              //监听提交
+              form.on('submit(login)', function(data){
+                // alert(888)
+                layer.msg('玩命加载中',function(){
+                    JSON.stringify(data.field);
+                    $.ajax({
+                        url:form.action,
+                        type:"POST",
+                        dataType:"json",
+                        data:{
+                            username: data.field.username,
+                            password: data.field.password,
+                            rememberMe: data.field.rememberMe==='on'
+                        },
+                        success:function (data) {
+                            if (data.code==200){
+                                location.href='index';
+                            }else {
+                                layer.msg(data.message);
+                            }
+                        },
+                        error:function (data) {
+                            layer.msg(data.message);
+                        }
+                    })
+                });
+               return false;
+              });
+            });
+        })
+
+        
+    </script>
+
+    
+    <!-- 底部结束 -->
+    <script>
+    //百度统计可去掉
+    let _hmt = _hmt || [];
+    (function() {
+      let hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+      let s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

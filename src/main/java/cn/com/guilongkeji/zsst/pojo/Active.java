@@ -63,6 +63,10 @@ public class Active {
      */
     private String dish;
     /**
+     * 排序
+     */
+    private Integer idx;
+    /**
      * 获取活动编号
      *
      * @return id - 活动编号
@@ -213,5 +217,29 @@ public class Active {
     }
     public boolean getBStatus(){
         return this.status>0?true:false;
+    }
+
+    public Integer getImg() {
+        return img;
+    }
+
+    public String getDish() {
+        return dish;
+    }
+
+    public void setImg(Integer img) {
+        this.img = img;
+    }
+
+    public void setDish(String dish) {
+        this.dish = dish;
+    }
+
+    public Integer getIndex() {
+        return idx;
+    }
+
+    public void setIndex(Integer idx) {
+        this.idx = idx;
     }
 }

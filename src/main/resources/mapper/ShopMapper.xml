@@ -10,26 +10,26 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="dish_id" jdbcType="INTEGER" property="dishId" />
     <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="region_id" jdbcType="INTEGER" property="regionId" />
+    <result column="region" jdbcType="VARCHAR" property="region" />
     <result column="history" jdbcType="INTEGER" property="history" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, avatar, name, dish_id, status, region_id, history
+    id, avatar, name, dish_id, status, region, history
   </sql>
   <sql id="BaseExcludeId">
-    avatar, name, dish_id, status, region_id, history
+    avatar, name, dish_id, status, region, history
   </sql>
   <sql id="BaseInsert">
-    #{avatar}, #{name}, #{dishId}, #{status}, #{regionId}, #{history}
+    #{avatar}, #{name}, #{dishId}, #{status}, #{region}, #{history}
   </sql>
   <sql id="BaseInserts">
-    #{i.avatar}, #{i.name}, #{i.dishId}, #{i.status}, #{i.regionId}, #{i.history}
+    #{i.avatar}, #{i.name}, #{i.dishId}, #{i.status}, #{i.region}, #{i.history}
   </sql>
   <sql id="BaseUpdate">
-    avatar=#{avatar}, name=#{name},dish_id= #{dishId}, status=#{status},region_id= #{regionId}, history=#{history}
+    avatar=#{avatar}, name=#{name},dish_id= #{dishId}, status=#{status},region= #{region}, history=#{history}
   </sql>
   <sql id="BaseUpdates">
-    avatar=#{i.avatar},name= #{i.name}, dish_id=#{i.dishId},status= #{i.status}, region_id=#{i.regionId}, history= #{i.history}
+    avatar=#{i.avatar},name= #{i.name}, dish_id=#{i.dishId},status= #{i.status}, region=#{i.region}, history= #{i.history}
   </sql>
   <insert id="addShop">
     insert into shop(<include refid="BaseExcludeId"></include>) values (<include refid="BaseInsert"></include>)
@@ -54,13 +54,16 @@
   <delete id="removeShops">
     delete shop where id in (
     <foreach collection="list" item="i" separator=",">
-      i
+      #{i}
     </foreach>)
   </delete>
   <select id="getShopById" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"></include> shop where id = #{id}
+    select <include refid="Base_Column_List"></include> from shop where id = #{id}
   </select>
   <select id="getAllShop" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"></include> shop
+    select <include refid="Base_Column_List"></include> from shop
+  </select>
+  <select id="getHotsShop" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from shop order by history desc LIMIT 2
   </select>
 </mapper>

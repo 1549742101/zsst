@@ -55,5 +55,12 @@ public interface ImgMapper {
      * @return java.util.List<cn.com.guilongkeji.zsst.pojo.Img>
      */
     public List<Img> getImgByAllId(List<Integer> ids);
-
+    /**
+     * 功能描述 根据功能模块获取图片
+     * @author xgl
+     * @date 2020/2/1
+      * @param url
+     * @return
+     */
+    public List<Img> getImgByUrl(String url);
 }

@@ -3,7 +3,6 @@ package cn.com.guilongkeji.zsst.mapper;
 
 import cn.com.guilongkeji.zsst.pojo.SysUser;
 import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
 
 /**
@@ -69,8 +68,32 @@ public interface SysUserMapper {
      * 功能描述 获取所有用户
      * @author xgl
      * @date 2020/1/31
-      * @param
+     * @param
      * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysUser>
      */
     public List<SysUser> getAllUser();
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/4
+     * @param ids
+     * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysUser>
+     */
+    public List<SysUser> getAllUserByIds(List<Integer> ids);
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/4
+     * @param ids
+     * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysUser>
+     */
+    public List<SysUser> getAllUserExcludeIds(List<Integer> ids);
+    /**
+     * 功能描述 根据角色获取注册用户
+     * @author xgl
+     * @date 2020/2/4
+     * @param
+     * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysUser>
+     */
+    public List<SysUser> getUserByRolesOne();
 }

@@ -19,4 +19,14 @@ public class Img {
     private Integer id;
     private String name;
     private String url;
+    private String description;
+    private Byte type;
+    public void setBType(boolean type){
+        Byte one = 1;
+        Byte zero = 0;
+        this.type=type?one:zero;
+    }
+    public boolean getBType(){
+        return type.equals(1);
+    }
 }

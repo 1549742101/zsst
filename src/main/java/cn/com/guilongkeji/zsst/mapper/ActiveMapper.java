@@ -104,4 +104,21 @@ public interface ActiveMapper{
      * @return void
      */
     public void updateAllActive(List<Active> active);
+
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/10
+      * @param
+     * @return java.util.List<cn.com.guilongkeji.zsst.pojo.Active
+     */
+    public List<Active> getHotsActive();
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/11
+      * @param  sid
+     * @return java.util.List<cn.com.guilongkeji.zsst.pojo.Active>
+     */
+    public Active getHotsActiveByShop(Integer sid);
 }

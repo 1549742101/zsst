@@ -38,8 +38,7 @@ public class Shop {
     /**
      * 区域编号
      */
-    @Column(name = "region_id")
-    private Integer regionId;
+    private String region;
 
     /**
      * 浏览记录
@@ -141,17 +140,17 @@ public class Shop {
      *
      * @return region_id - 区域编号
      */
-    public Integer getRegionId() {
-        return regionId;
+    public String getRegion() {
+        return region;
     }
 
     /**
      * 设置区域编号
      *
-     * @param regionId 区域编号
+     * @param region 区域编号
      */
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     /**

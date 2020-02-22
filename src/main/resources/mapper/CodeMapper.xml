@@ -17,7 +17,7 @@
     id, phone, code, time
   </sql>
   <select id="getCodeByPhone" resultType="cn.com.guilongkeji.zsst.pojo.Code">
-    select * from code where phone = #{phone}
+    select * from code where phone = #{phone} order by time desc limit 1
   </select>
   <insert id="insertCode" parameterType="cn.com.guilongkeji.zsst.pojo.Code">
     INSERT INTO code(phone, code, time) VALUES (#{phone}, #{code}, now())

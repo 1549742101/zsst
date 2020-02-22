@@ -53,7 +53,7 @@
   <delete id="removeDishes">
       delete dish where id in (
       <foreach collection="list" item="i" separator=",">
-      i
+        #{i}
       </foreach>)
   </delete>
   <select id="getAllDish" resultMap="BaseResultMap">

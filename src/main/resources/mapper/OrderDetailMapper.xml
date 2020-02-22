@@ -39,7 +39,7 @@
   <delete id="removeAllOrderDetail">
     delete order_detail where id in (
     <foreach collection="list" item="i" separator=",">
-     i
+      #{i}
     </foreach>)
   </delete>
     <delete id="removeOrderDetailByOrder">
@@ -60,7 +60,7 @@
   <select id="getOrderDetailByAllDish" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include> from order_detail where dish_id in (
     <foreach collection="list" item="i" separator=",">
-    i
+      #{i}
     </foreach>)
   </select>
   <select id="getOrderDetailDtoByOrderId" resultMap="OrderDetailDto">

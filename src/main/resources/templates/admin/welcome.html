@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="shortcut icon"  th:href="@{/favicon.ico}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{../../static/admin/admin/css/font.css}">
+        <link rel="stylesheet" href="./admin//css/xadmin.css">
+    </head>
+    <body>
+    <div class="x-body layui-anim layui-anim-up">
+        <blockquote class="layui-elem-quote">欢迎管理员：
+            <span class="x-red">test</span>！当前时间:<span th:text="${#dates.format(#dates.createNow(),'YYYY-MM-dd HH:mm:ss')}"></span></blockquote>
+        <fieldset class="layui-elem-field">
+            <legend>系统信息</legend>
+            <div class="layui-field-box">
+                <table class="layui-table">
+                    <tbody>
+                        <tr>
+                            <th>掌上食堂版本</th>
+                            <td>1.0.0</td></tr>
+                        <tr>
+                            <th>服务器地址</th>
+                            <td>https://guilongkeji.com.cn</td></tr>
+                        <tr>
+                            <th>操作系统</th>
+                            <td>WINSERVER2012</td></tr>
+                        <tr>
+                            <th>运行环境</th>
+                            <td>JAVA</td></tr>
+                        <tr>
+                            <th>MYSQL版本</th>
+                            <td>5.7</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <fieldset class="layui-elem-field">
+            <legend>开发团队</legend>
+            <div class="layui-field-box">
+                <table class="layui-table">
+                    <tbody>
+                        <tr>
+                            <th>版权所有</th>
+                            <td>贵龙科技有限公司
+                                <a href="http://www.guilongkeji.com.cn/" class='x-a' target="_blank">访问官网</a></td>
+                        </tr>
+                        <tr>
+                            <th>开发者</th>
+                            <td>贵龙科技(guilongkeji@qq.com)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,本系统由x-admin提供技术支持。</blockquote>
+    </div>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    </body>
+</html>

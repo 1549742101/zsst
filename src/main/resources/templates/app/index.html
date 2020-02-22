@@ -2,41 +2,52 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>掌上食堂</title>
+    <title>掌上食堂-首页</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link th:href="@{app/css/public.css}" href="app/css/public.css" rel="stylesheet">
-    <link th:href="@{app/css/index.css}" href="app/css/public.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{webjars/jquery/3.4.1/jquery.min.js}" herf="webjars/jquery/3.4.1/jquery.min.js">
+    <link th:href="@{/app/css/public.css}" href="/app/css/public.css" rel="stylesheet">
+    <link th:href="@{/app/css/index.css}" href="/app/css/public.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}"href="/webjars/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
 <div class="content">
     <div class="header ctt">
-        <p class="phone"><a th:href="@{about.html}">联系我们</a></p>
+        <p class="phone"><a th:href="@{/about.html}">联系我们</a></p>
     </div>
     <div class="menu">
         <div class="ctt">
-            <img class="logo" thsrc="img/logo.png"  alt="logo" width="14%" height="40px">
+            <img class="logo" th:src="@{/app/img/logo.png}"  alt="logo" width="14%" height="40px">
             <div class="menu_content">
                 <ul class="ul_menu">
-                    <li class="active"><a href="/index">首页</a></li>
-                    <li><a href="/findDish">觅食</a></li>
-                    <li><a href="/order">订单</a></li>
-                    <li><a href="/myCount">账户</a></li>
+                    <li class="active"><a href="index.html" th:href="@{${menuUrl.get('首页')}}">首页</a></li>
+                    <li><a href="findDish.html" th:href="@{${menuUrl.get('觅食')}}">觅食</a></li>
+                    <li><a href="order.html" th:href="@{${menuUrl.get('购物车')}}">购物车</a></li>
+                    <li><a href="myCount.html" th:href="@{${menuUrl.get('我的')}}">我的</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="form ctt">
         <div class="form_content">
-            <ul class="form_menu">
+            <ul class="form_menu" th:if="${username}==null">
                 <li class="hello">亲，登录发现更多好货哦！</li>
                 <li>
                     <ul class="form_menu1">
-                        <li><a class="login_in" data-toggle="modal" data-target="#login">【点击登录】</a></li>
+                        <li><a href="javascript:void(0)" class="login_in" data-toggle="modal" data-target="#login">【点击登录】</a></li>
                     </ul>
                     <ul class="form_menu2">
-                        <li><a class="refresh">【刷新页面】</a></li>
+                        <li><a href="index" class="refresh">【刷新页面】</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="form_menu" th:if="${username}!=null">
+                <li class="hello">尊敬的 <a href="myCount.html" th:href="@{${menuUrl.get('我的')}}" th:text="${username}"></a>用户，欢迎您光临本网站！</li>
+                <li>
+                    <ul class="form_menu1">
+                        <li><a href="loginOut" class="login_out">【点击退出】</a></li>
+                    </ul>
+                    <ul class="form_menu2">
+                        <li><a href="index" class="refresh">【刷新页面】</a></li>
                     </ul>
                 </li>
             </ul>
@@ -44,53 +55,28 @@
     </div>
 
     <div class="banner ctt">
-        <ul class="banner_ul">
-            <li class="active"><img src="img/banner.jpg" alt=""></li>
-            <li><img src="img/banner.png" alt=""></li>
-            <li><img src="img/banner.png" alt=""></li>
-            <li><img src="img/banner.jpg" alt=""></li>
+        <ul class="banner_ul" >
+            <li th:each="item,itemStat:${banner}" th:class="${itemStat.index}==1?'active':''">
+                <img th:src="'/api/img/index/'+${item.getName()}"  src="app/img/banner.jpg" alt="">
+            </li>
         </ul>
         <ul class="banner_ol">
-            <li class="active">
-                <p>油油鱼</p>
-            </li>
-            <li>
-                <p>油油鱼</p>
-            </li>
-            <li>
-                <p>油油鱼</p>
-            </li>
-            <li>
-                <p>油油鱼</p>
+            <li th:each="item,itemStat:${banner}" th:class="${itemStat.index}==1?'active':''">
+                <p th:text="${item.getDescription()}">油油鱼</p>
             </li>
         </ul>
         <ul class="banner_on">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li th:each="item,itemStat:${banner}" th:class="${itemStat.index}==1?'active':''"></li>
         </ul>
     </div>
     <div class="message ctt bgb">
         <div class="span_">
-            <img src="img/4.gif" class="title_img" width="215px" height="47px">
+            <img src="/app/img/activity.jpg" class="title_img" width="215px" height="47px">
             <div class="activity">
                 <ul class="act_ul">
-                    <li>
-                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
-                        <span>2019/11/11</span>
-                    </li>
-                    <li>
-                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
-                        <span>2019/11/11</span>
-                    </li>
-                    <li>
-                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
-                        <span>2019/11/11</span>
-                    </li>
-                    <li>
-                        <p><a href="">xxxxxxxxxxxxxxx</a></p>
-                        <span>2019/11/11</span>
+                    <li th:each="item,itemStat:${active}">
+                        <p><a th:href="'/shop?id='+${item.getShopId()}" th:text="${item.getName()}">xxxxxxxxxxxxxxx</a></p>
+                        <span th:text="${#dates.format(item.getStartTime(),'YYYY-MM-dd hh:mm:ss')}">2019/11/11</span>
                     </li>
                 </ul>
             </div>
@@ -98,20 +84,21 @@
     </div>
     <div class="shop ctt bgb">
         <div class="span_">
-            <div class="shop_title_img"><img src="img/5.gif"></div>
+            <div class="shop_title_img"><img src="/app/img/hotShop.jpg"></div>
             <ul class="shop_content">
-                <li>
-                    <span><img src="img/2.jpg" alt=""></span>
+                <li th:object="${shop.get(0)}">
+                    <span><a th:href="'/shop?id='+*{id}"><img th:src="'/api/img/'+${shop.get(0).getImg().getUrl()}+'/'+${shop.get(0).getImg().getName()}" alt=""></a></span>
                     <div>
 
                         <ul>
-                            <h2>老正香鸡排</h2>
-                            <li><name>地址：</name><value>新食堂一楼</value></li>
-                            <li><name>主打菜：</name><value>正香鸡排</value></li>
-                            <li><name>平均消费：</name><value>10</value></li>
-                            <li><name>最近上新</name><value>正香鸡排</value></li>
-                            <li><name>最新评价：</name><value>好吃</value></li>
-                            <li><name>近日活动：</name><value>无</value></li>
+                            <h2 th:text="*{name}">老正香鸡排</h2>
+                            <li><name>地址：</name><value th:text="*{region}">新食堂一楼</value></li>
+                            <li><name>主打菜：</name><value th:text="*{hotDish}==null?'暂无':*{hotDish.getName()}">正香鸡排</value></li>
+                            <li><name>平均消费：</name><value th:text="*{centerMoney}">10</value></li>
+                            <li><name>今日销售：</name><value th:text="*{sale}"></value></li>
+                            <li><name>总共销售：</name><value th:text="*{sales}">好吃</value></li>
+                            <li><name>最新活动：</name><value th:text="*{active}==null?'暂无':*{active.getName()}"></value></li>
+                            <li class="d-none" id="praise0" th:text="*{praise}"></li>
                         </ul>
                         <span>
                             <svg width="160" height="160" viewBox="0 0 160 160"
@@ -139,22 +126,23 @@
                         </span>
                     </div>
                 </li>
-                <li>
-                    <span><img src="img/2.jpg" alt=""></span>
+                <li th:object="${shop.get(1)}">
+                    <span><a th:href="'/shop?id='+*{id}"><img th:src="'/api/img/'+${shop.get(1).getImg().getUrl()}+'/'+${shop.get(1).getImg().getName()}" alt=""></a></span>
                     <div>
 
                         <ul>
-                            <h2>老正香鸡排</h2>
-                            <li><name>地址：</name><value>新食堂一楼</value></li>
-                            <li><name>主打菜：</name><value>正香鸡排</value></li>
-                            <li><name>平均消费：</name><value>10</value></li>
-                            <li><name>最近上新</name><value>正香鸡排</value></li>
-                            <li><name>最新评价：</name><value>好吃</value></li>
-                            <li><name>近日活动：</name><value>无</value></li>
+                            <h2 th:text="*{name}">老正香鸡排</h2>
+                            <li><name>地址：</name><value th:text="*{region}">新食堂一楼</value></li>
+                            <li><name>主打菜：</name><value th:text="*{hotDish}==null?'暂无':*{hotDish.getName()}">正香鸡排</value></li>
+                            <li><name>平均消费：</name><value th:text="*{centerMoney}">10</value></li>
+                            <li><name>今日销售：</name><value th:text="*{sale}"></value></li>
+                            <li><name>总共销售：</name><value th:text="*{sales}">好吃</value></li>
+                            <li><name>最新活动：</name><value th:text="*{active}==null?'暂无':*{active.getName()}"></value></li>
+                            <li class="d-none" id="praise1" th:text="*{praise}"></li>
                         </ul>
                         <span>
                             <svg width="160" height="160" viewBox="0 0 160 160"
-                             xmlns="http://www.w3.org/2000/svg">
+                                 xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="80"  cy="80"   r = "70"
                                         fill="none"  stroke="#ccc" stroke-width="20"
                                 ></circle>
@@ -204,33 +192,41 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">用户名</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入用户名">
+                        <input type="text" class="form-control loginUserName" placeholder="请输入用户名,长度5-20位">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">密&ensp;&ensp;码</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入密码">
+                        <input type="password" class="form-control loginPassWord" placeholder="请输入密码，长度5-20位">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">验证码</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入右侧验证码">
+                        <input type="text" class="form-control loginCode" placeholder="请输入右侧验证码">
                         <div class="input-group-append">
-                            <span class="input-group-text">
-                                <a th:href="@{javascript:void(0)" class="getCode">点击获取验证码</a>
+                            <span class="input-group-text getCode1">
                             </span>
                         </div>
                     </div>
-
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input rememberMe">记住我
+                        </label>
+                    </div>
                 </form>
+                <div class="alert alert-danger alert-dismissible fade" id="msgBox1">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>ERROR!</strong><span></span>
+                </div>
             </div>
 
             <!-- 模态框底部 -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">登录</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#register">注册</button>
+                <a href="javascript:void (0)" class="forget" data-dismiss="modal">忘记密码</a>
+                <button type="button" class="btn btn-secondary login">登录</button>
+                <button type="button" class="btn btn-secondary reg" data-dismiss="modal" data-toggle="modal" data-target="#register">注册</button>
             </div>
 
         </div>
@@ -254,34 +250,33 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">用&ensp;户&ensp;名</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入用户名">
+                        <input type="text" class="form-control registerUserName" placeholder="请输入用户名">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">密&ensp;&ensp;&ensp;&ensp;码</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入密码">
+                        <input type="password" class="form-control registerPassWord" placeholder="请输入密码">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">确认密码</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入密码">
+                        <input type="password" class="form-control registerPassWords" placeholder="请再次输入密码">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">手&ensp;机&ensp;号</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入密码">
+                        <input type="text" class="form-control registerPhone" placeholder="请输入手机号">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">验&ensp;证&ensp;码</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入右侧验证码">
+                        <input type="text" class="form-control reCode" placeholder="请输入右侧验证码">
                         <div class="input-group-append">
-                            <span class="input-group-text">
-                                <a th:href="@{javascript:void(0)" class="getCode">点击获取验证码</a>
+                            <span class="input-group-text getCode2">
                             </span>
                         </div>
                     </div>
@@ -289,27 +284,31 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">验&ensp;证&ensp;码</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="请输入手机验证码">
+                        <input type="text" class="form-control phoneCode" placeholder="请输入手机验证码">
                         <div class="input-group-append">
                             <span class="input-group-text">
-                                <a th:href="@{javascript:void(0)" class="getCode">请输入验证码后点击获取</a>
+                                <a href="javascript:void(0)" class="getPhoneCode">请输入验证码后点击获取</a>
                             </span>
                         </div>
                     </div>
                 </form>
+                <div class="alert alert-danger alert-dismissible fade" id="msgBox2">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>ERROR!</strong><span></span>
+                </div>
             </div>
 
             <!-- 模态框底部 -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">注册</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#login">登录</button>
+                <button type="button" class="btn btn-secondary" id="reg">注册</button>
+                <button type="button" class="btn btn-secondary login_in" data-dismiss="modal" data-toggle="modal" data-target="#login">登录</button>
             </div>
 
         </div>
     </div>
 </div>
-<script src="../../static/app/js/jquery-3.4.0.min.js"></script>
-<script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
-<script src="../../static/app/js/index.js"></script>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script th:src="@{/app/js/index.js}"></script>
 </body>
 </html>

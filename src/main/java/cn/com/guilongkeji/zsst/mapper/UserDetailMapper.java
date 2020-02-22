@@ -62,4 +62,12 @@ public interface UserDetailMapper {
      * @return void
      */
     public void removeUserDetails(List<Integer> ids);
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/4
+      * @param
+     * @return java.util.List<java.lang.Integer>
+     */
+    public List<Integer> getUserId();
 }
