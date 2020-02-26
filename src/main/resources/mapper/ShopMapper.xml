@@ -10,7 +10,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="dish_id" jdbcType="INTEGER" property="dishId" />
     <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="region" jdbcType="INTEGER" property="region" />
     <result column="history" jdbcType="INTEGER" property="history" />
   </resultMap>
   <sql id="Base_Column_List">

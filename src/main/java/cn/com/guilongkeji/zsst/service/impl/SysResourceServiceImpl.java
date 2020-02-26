@@ -3,6 +3,7 @@ package cn.com.guilongkeji.zsst.service.impl;
 import cn.com.guilongkeji.zsst.mapper.SysResourceMapper;
 import cn.com.guilongkeji.zsst.pojo.SysResource;
 import cn.com.guilongkeji.zsst.service.SysResourceService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/1/13
  */
+@Service
 public class SysResourceServiceImpl implements SysResourceService {
     @Resource
     private SysResourceMapper sysResourceMapper;

@@ -1,5 +1,6 @@
 package cn.com.guilongkeji.zsst.service.impl;
 
+import cn.com.guilongkeji.zsst.dto.UserDto;
 import cn.com.guilongkeji.zsst.mapper.SysResourceMapper;
 import cn.com.guilongkeji.zsst.mapper.SysRoleMapper;
 import cn.com.guilongkeji.zsst.mapper.SysUserMapper;
@@ -12,6 +13,7 @@ import cn.com.guilongkeji.zsst.service.SysUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -84,5 +86,19 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public List<SysResource> getResourceTwo() {
         return null;
+    }
+
+    @Override
+    public List<UserDto> getAllUser() {
+        List<UserDetail> userDetailList = userDetailMapper.getAllUserDetail();
+        List<SysUser> sysUserList = sysUserMapper.getAllUserByIds(userDetailMapper.getUserId());
+        List<UserDto> userDtoList = new ArrayList<>();
+        for (int i = 0; i <userDetailList.size() ; i++) {
+            UserDto userDto = new UserDto();
+            userDto.setSysUser(sysUserList.get(i));
+            userDto.setUserDetail(userDetailList.get(i));
+            userDtoList.add(userDto);
+        }
+        return userDtoList;
     }
 }

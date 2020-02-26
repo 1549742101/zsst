@@ -230,7 +230,7 @@
 1581339086321|41|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
 1581339112168|16|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
 1581341862681|18|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
-1581341867394|16|statement|connection 2|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1581341867394|16|statement|connection 2|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL333
 1581341986560|18|statement|connection 3|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
 1581341990177|16|statement|connection 4|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
 1581342093214|16|statement|connection 5|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
@@ -1938,3 +1938,205 @@
 1582261832209|72|statement|connection 0|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where id = ?|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where id = NULL
 1582261832282|72|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 and shop_id = ? order by idx desc limit 1;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 and shop_id = 3 order by idx desc limit 1;
 1582261832356|72|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582554118050|26|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582554285565|26|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582554332433|84|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582554423293|82|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582554483430|171|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582554483664|76|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582554483757|84|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id       not in (               )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id       not in (               )
+1582554939830|23|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582555364683|22|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582555369398|16|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555369571|16|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555399516|23|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582555405306|34|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555405482|16|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555405524|24|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                   -1                 )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                   -1                 )
+1582555464502|17|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555464520|17|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555464537|16|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                   -1                 )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                   -1                 )
+1582555495883|17|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555495901|16|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555495921|16|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582555497318|17|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555497336|17|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555497355|17|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582555498413|17|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555498431|17|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555498450|17|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582555501412|16|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555501431|17|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555501449|17|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582555525740|16|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555525757|16|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555525774|16|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582555530700|16|statement|connection 0|SELECT count(0) FROM user_detail|SELECT count(0) FROM user_detail
+1582555530719|16|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail LIMIT ? |select            id, avatar, name, method, img, code, user_id     from user_detail LIMIT 5 
+1582555530736|16|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555530753|16|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582555531581|16|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555531598|16|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555531615|16|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582555719386|31|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582555805359|18|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582555805390|21|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582555820670|18|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582555820712|22|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582556029350|86|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582556048836|80|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582556049274|78|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582556049375|78|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582556160536|78|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582556160615|78|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582556160737|78|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582556160815|77|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582556196482|77|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582556196781|77|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582556196860|77|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582556206972|77|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582556207181|19|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582598851899|24|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582599046296|19135|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582599046469|18|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582599046744|25|statement|connection 1|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582599046782|19|statement|connection 1|select user_id from user_detail|select user_id from user_detail
+1582599046823|22|statement|connection 1|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582599066944|20|statement|connection 1|SELECT count(0) FROM sys_role|SELECT count(0) FROM sys_role
+1582599066965|19|statement|connection 1|select       id, role, description, resource_ids, available     from sys_role LIMIT ? |select       id, role, description, resource_ids, available     from sys_role LIMIT 5 
+1582600144726|78|statement|connection 2|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582600144966|82|statement|connection 2|SELECT count(0) FROM sys_role|SELECT count(0) FROM sys_role
+1582600145053|85|statement|connection 2|select       id, role, description, resource_ids, available     from sys_role LIMIT ? |select       id, role, description, resource_ids, available     from sys_role LIMIT 5 
+1582600152052|19132|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582600152131|77|statement|connection 2|SELECT count(0) FROM sys_role|SELECT count(0) FROM sys_role
+1582600152210|77|statement|connection 2|select       id, role, description, resource_ids, available     from sys_role LIMIT ? |select       id, role, description, resource_ids, available     from sys_role LIMIT 5 
+1582600152676|77|statement|connection 3|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582602634504|19|statement|connection 4|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582602634564|19|statement|connection 4|SELECT count(0) FROM sys_role|SELECT count(0) FROM sys_role
+1582602634585|19|statement|connection 4|select       id, role, description, resource_ids, available     from sys_role LIMIT ? |select       id, role, description, resource_ids, available     from sys_role LIMIT 5 
+1582602658078|24|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582602689502|24|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582602730204|21|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582602730376|17|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582602730421|20|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582602733342|17|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user|select            id, username, password, salt, phone, role_ids, locked     from sys_user
+1582602737710|17|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user|select            id, username, password, salt, phone, role_ids, locked     from sys_user
+1582602746079|16|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user|select            id, username, password, salt, phone, role_ids, locked     from sys_user
+1582602769607|17|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user|select            id, username, password, salt, phone, role_ids, locked     from sys_user
+1582602774081|17|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user|select            id, username, password, salt, phone, role_ids, locked     from sys_user
+1582609542601|19151|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582609542813|19|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582609542895|19|statement|connection 1|SELECT count(0) FROM sys_role|SELECT count(0) FROM sys_role
+1582609542919|19|statement|connection 1|select       id, role, description, resource_ids, available     from sys_role LIMIT ? |select       id, role, description, resource_ids, available     from sys_role LIMIT 5 
+1582618991359|25|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582619019943|22|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582619019969|18|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582619020023|52|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582619050077|16|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582619050099|20|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582619050141|19|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582619067594|16|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582619067612|16|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582619067629|16|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582619229316|19141|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582619229477|19|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582619229538|22|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582619229557|18|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582619229579|19|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582619272519|25|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582619275054|18|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582619275079|17|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582619275100|20|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582619320052|18|statement|connection 0|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582619320071|17|statement|connection 0|select user_id from user_detail|select user_id from user_detail
+1582619320117|22|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582619479425|19137|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582619479608|18|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582619479670|23|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582619479694|22|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582619479718|23|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582619480832|19|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582619480854|19|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582619480876|20|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582619534896|19|statement|connection 1|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582619534916|18|statement|connection 1|select user_id from user_detail|select user_id from user_detail
+1582619534936|18|statement|connection 1|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582619547004|22|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582619547028|19|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582619547049|19|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582620052074|35|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582620172252|19133|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582620172902|78|statement|connection 2|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582620173139|79|statement|connection 2|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582620173219|78|statement|connection 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582620173300|78|statement|connection 2|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582620792973|36|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582620884646|89|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582620985667|30|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582621084709|91|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582621121810|32|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582621124326|17|statement|connection 3|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582621275643|19|statement|connection 4|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582621282929|19|statement|connection 5|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582621292767|32|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582621655052|92|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582622718232|23|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582622811281|17|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582622811335|40|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582622811358|16|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582622811378|18|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582622878535|16|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582622878555|19|statement|connection 0|select            id, username, password, salt, phone, role_ids, locked     from sys_user|select            id, username, password, salt, phone, role_ids, locked     from sys_user
+1582622925145|39|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582622947258|26|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582622976271|18|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582622979296|18|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582623161181|100|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582623188776|80|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582623189494|79|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582623189691|80|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582623368783|19224|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582623368944|17|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582623368996|18|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582623389874|17|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582623390384|18|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582623459388|24|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582623472847|23|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582623472873|18|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582623472892|18|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582623482779|17|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582623482797|17|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582623482815|17|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582624433186|19291|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582624433361|18|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582624433417|18|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582624433437|18|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582624433456|18|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582624464529|22|statement|connection 1|select            id, avatar, name, method, img, code, user_id     from user_detail|select            id, avatar, name, method, img, code, user_id     from user_detail
+1582624464549|18|statement|connection 1|select user_id from user_detail|select user_id from user_detail
+1582624464604|19|statement|connection 1|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  ?                             )|select            id, username, password, salt, phone, role_ids, locked     from sys_user where id      in (                                  1                             )
+1582624475012|19|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582624475033|18|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582624475054|18|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582624643148|29|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582624661216|83|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582624694808|79|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582624694892|77|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582624694973|78|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582624812934|23|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582624816081|19|statement|connection 0|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582624816107|17|statement|connection 0|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582624816127|18|statement|connection 0|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;
+1582629217387|19133|statement|connection 0|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582629217523|16|statement|connection 1|SELECT 1 FROM DUAL|SELECT 1 FROM DUAL
+1582629217576|17|statement|connection 1|select           id, name, url , description , type       from img where url = ? and type = 1|select           id, name, url , description , type       from img where url = 'index' and type = 1
+1582629217596|18|statement|connection 1|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2|select       id, avatar, name, dish_id, status, region, history     from shop order by history desc LIMIT 2
+1582629217615|16|statement|connection 1|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where shop_id = ?|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where shop_id = 2
+1582629217634|18|statement|connection 1|select           id, name, url , description , type       from img where id = ?|select           id, name, url , description , type       from img where id = 9
+1582629217652|16|statement|connection 1|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where id = ?|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where id = 5
+1582629217670|16|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 and shop_id = ? order by idx desc limit 1;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 and shop_id = 2 order by idx desc limit 1;
+1582629217687|16|statement|connection 1|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where shop_id = ?|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where shop_id = 3
+1582629217704|16|statement|connection 1|select           id, name, url , description , type       from img where id = ?|select           id, name, url , description , type       from img where id = 8
+1582629217721|16|statement|connection 1|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where id = ?|select            id, name, money, img, sales, sale, praise, shop_id, active, status     from dish where id = 7
+1582629217737|15|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 and shop_id = ? order by idx desc limit 1;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 and shop_id = 3 order by idx desc limit 1;
+1582629217754|16|statement|connection 1|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;|select            id, shop_id, name, start_time, end_time, cause, term, status, img, dish, idx     from active where status = 1 order by idx desc limit 4;

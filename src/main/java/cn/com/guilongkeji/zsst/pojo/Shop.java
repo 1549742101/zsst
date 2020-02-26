@@ -38,7 +38,7 @@ public class Shop {
     /**
      * 区域编号
      */
-    private String region;
+    private Integer region;
 
     /**
      * 浏览记录
@@ -140,7 +140,7 @@ public class Shop {
      *
      * @return region_id - 区域编号
      */
-    public String getRegion() {
+    public Integer getRegion() {
         return region;
     }
 
@@ -149,7 +149,7 @@ public class Shop {
      *
      * @param region 区域编号
      */
-    public void setRegion(String region) {
+    public void setRegion(Integer region) {
         this.region = region;
     }
 

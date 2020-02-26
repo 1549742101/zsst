@@ -69,7 +69,7 @@
             <td th:text="${item.getResourceIds()}"></td>
             <td th:text="${item.getDescription()}">具有至高无上的权利</td>
             <td class="td-status">
-              <span th:class="'layui-btn layui-btn-normal layui-btn-mini'+(${item.getBAvailable()})?'':'layui-btn-disabled'" th:text="(${item.getBAvailable()})?'已启用':'已停用'">已启用</span></td>
+              <span th:class="('layui-btn layui-btn-normal layui-btn-mini')+(${item.getBAvailable()})?'':'layui-btn-disabled'" th:text="(${item.getBAvailable()})?'已启用':'已停用'">已启用</span></td>
             <td class="td-manage">
               <a th:onclick="'javascript:member_stop(this,\''+${item.getId()}+'\')'" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
@@ -87,7 +87,7 @@
       <div class="page">
         <div>
           <a class="num" th:href="@{'?'(pageNum=${page.firstPage})}">首页</a>
-          <a class="prev num" th:href="@{'?'(pageNum=${page.prePage})}">&lt;&lt;</a>
+          <a class="prev num" th:href="@{'?'(pageNum=${page.prePage})}" th:class="${page.getPageNum()==1}?'layui-disabled prev num':'prev num'">&lt;&lt;</a>
           <span class="current" th:text="'第'+${page.getPageNum()}+'页'"></span>
           <a class="next num" th:href="@{'?'(pageNum=${page.nextPage})}">&gt;&gt;</a>
           <a class="num" th:href="@{'?'(pageNum=${page.lastPage})}">尾页</a>
@@ -164,5 +164,4 @@
         s.parentNode.insertBefore(hm, s);
       })();</script>
   </body>
-
 </html>

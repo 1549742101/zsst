@@ -68,7 +68,7 @@
         sys_role
         sys_user
         user_detail-->
-        <table tableName="active" mapperName="ActiveMapper" domainObjectName="Active"
+        <!--<table tableName="active" mapperName="ActiveMapper" domainObjectName="Active"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -249,8 +249,8 @@
                enableUpdateByPrimaryKey="false"
         >
             <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>
-        <!--<table tableName="*" mapperName="*Mapper" domainObjectName="*"
+        </table>-->
+        <table tableName="*" mapperName="*Mapper" domainObjectName="*"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -262,6 +262,6 @@
                enableUpdateByPrimaryKey="false"
         >
             <generatedKey column="id" sqlStatement="JDBC"/>
-        </table>-->
+        </table>
     </context>
 </generatorConfiguration>

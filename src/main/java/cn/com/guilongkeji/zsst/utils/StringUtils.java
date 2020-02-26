@@ -12,7 +12,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/2/6
  */
-public class StringUtils {
+public class StringUtils extends org.apache.commons.lang.StringUtils {
     public static List<Integer> StringToList(String arg){
         List<Integer> list = new ArrayList<>();
         for (String s:arg.split(",")){

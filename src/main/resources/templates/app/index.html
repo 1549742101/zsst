@@ -75,7 +75,7 @@
             <div class="activity">
                 <ul class="act_ul">
                     <li th:each="item,itemStat:${active}">
-                        <p><a th:href="'/shop?id='+${item.getShopId()}" th:text="${item.getName()}">xxxxxxxxxxxxxxx</a></p>
+                        <p><a th:href="${item.getBStatus()}?'/shop?id='+${item.getShopId()}:'/shop'" th:text="${item.getName()}">xxxxxxxxxxxxxxx</a></p>
                         <span th:text="${#dates.format(item.getStartTime(),'YYYY-MM-dd hh:mm:ss')}">2019/11/11</span>
                     </li>
                 </ul>

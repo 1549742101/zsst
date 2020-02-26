@@ -1,5 +1,6 @@
 package cn.com.guilongkeji.zsst.controller;
 
+import cn.com.guilongkeji.zsst.dto.UserDto;
 import cn.com.guilongkeji.zsst.pojo.SysResource;
 import cn.com.guilongkeji.zsst.pojo.SysUser;
 import cn.com.guilongkeji.zsst.pojo.UserDetail;
@@ -9,6 +10,8 @@ import cn.com.guilongkeji.zsst.service.SysResourceService;
 import cn.com.guilongkeji.zsst.service.SysUserService;
 import cn.com.guilongkeji.zsst.service.UserService;
 import cn.com.guilongkeji.zsst.utils.StringUtils;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,6 +70,9 @@ public class SysUserController {
     @RequestMapping("/index")
     public String index(Model model){
         Subject subject = SecurityUtils.getSubject();
+        if (!subject.isAuthenticated()){
+            return login();
+        }
         List<SysResource> sysResourceList = null;
         String[] roleId = {"2","3","5","6","7"};
         if (subject.hasRole("")){
@@ -80,7 +87,6 @@ public class SysUserController {
         }else if (subject.hasRole(roleId[4])){
 
         }else {
-            return "";
         }
         SysUser sysUser = userService.getUserByName(subject.getPrincipal().toString());
         model.addAttribute("username",sysUser.getUsername());
@@ -117,11 +123,61 @@ public class SysUserController {
      * @return cn.com.guilongkeji.zsst.result.Result
      */
     @RequestMapping("vipGet")
-    @ResponseBody
-    public Result vipGet(){
-        List<Integer> userIdList = sysUserService.getUserByDetail();
-        List<SysUser> userList = sysUserService.getAllSysUserByIds(userIdList);
-        return ResultFactory.buildSuccessResult(userList);
+    public String vipGet(Model model,@RequestParam(required=true,defaultValue="1") Integer pageNum,@RequestParam(required=true,defaultValue="")String phone,@RequestParam(required=true,defaultValue="-1")Integer id,@RequestParam(required=true,defaultValue="")String username,@RequestParam(required=true,defaultValue="")String name){
+        List<UserDto> userList = sysUserService.getAllUser();
+        PageHelper.startPage(pageNum,5);
+        if (!id.equals(new Integer(-1))){
+            UserDto userDto1 =  null;
+            for (UserDto userDto:userList
+            ) {
+                if (userDto.getSysUser().getId().equals(id)){
+                    userDto1=userDto;
+                    userList.clear();
+                    break;
+                }
+            }
+            userList.clear();
+            if (userDto1!=null){
+                userList.add(userDto1);
+            }
+        }
+        if (StringUtils.isBlank(phone)){
+            List<UserDto> search = new ArrayList<>();
+            for (UserDto userDto:userList
+            ) {
+                if (StringUtils.contains(userDto.getSysUser().getPhone(),phone)){
+                    search.add(userDto);
+                }
+            }
+            userList.clear();
+            userList.addAll(search);
+        }
+        if (StringUtils.isBlank(username)){
+            List<UserDto> search = new ArrayList<>();
+            for (UserDto userDto:userList
+            ) {
+                if (StringUtils.contains(userDto.getSysUser().getUsername(),username)){
+                    search.add(userDto);
+                }
+            }
+            userList.clear();
+            userList.addAll(search);
+        }
+        if (StringUtils.isBlank(name)){
+            List<UserDto> search = new ArrayList<>();
+            for (UserDto userDto:userList
+            ) {
+                if (StringUtils.contains(userDto.getUserDetail().getName(),name)){
+                    search.add(userDto);
+                }
+            }
+            userList.clear();
+            userList.addAll(search);
+        }
+        PageInfo<UserDto> pageInfo = new PageInfo<>(userList);
+        model.addAttribute("userList",userList);
+        model.addAttribute("page",pageInfo);
+        return "admin/admin/vip";
     }
     /**
      * 功能描述 会员详情
@@ -131,17 +187,53 @@ public class SysUserController {
      * @return cn.com.guilongkeji.zsst.result.Result
      */
     @RequestMapping("vipGetAll")
-    @ResponseBody
     public Result vipGetAll(Integer id){
         UserDetail userDetail = userService.getUserDetailByUserId(id);
         return ResultFactory.buildSuccessResult(userDetail);
     }
 
-    @RequestMapping("regUser")
-    @ResponseBody
-    public Result regUser(){
-        List<SysUser> userList = sysUserService.getUserByRolesOne();
-        return ResultFactory.buildSuccessResult(userList);
+    @RequestMapping("getAllUser")
+    public String regUser(Model model,@RequestParam(required=true,defaultValue="1") Integer pageNum,@RequestParam(required=true,defaultValue="")String phone,@RequestParam(required=true,defaultValue="-1")Integer id,@RequestParam(required=true,defaultValue="")String username){
+        List<SysUser> userList = sysUserService.getAllSysUser();
+        PageHelper.startPage(pageNum,5);
+        if (!id.equals(new Integer(-1))){
+            SysUser sysUser =  null;
+            for (SysUser user:userList) {
+                if (user.getId().equals(id)){
+                    sysUser=user;
+                    userList.clear();
+                    break;
+                }
+            }
+            userList.clear();
+            if (sysUser!=null){
+                userList.add(sysUser);
+            }
+        }
+        if (StringUtils.isBlank(phone)){
+            List<SysUser> search = new ArrayList<>();
+            for (SysUser user:userList)  {
+                if (StringUtils.contains(user.getPhone(),phone)){
+                    search.add(user);
+                }
+            }
+            userList.clear();
+            userList.addAll(search);
+        }
+        if (StringUtils.isBlank(username)){
+            List<SysUser> search = new ArrayList<>();
+            for (SysUser user:userList)  {
+                if (StringUtils.contains(user.getUsername(),username)){
+                    search.add(user);
+                }
+            }
+            userList.clear();
+            userList.addAll(search);
+        }
+        PageInfo<SysUser> pageInfo = new PageInfo<>(userList);
+        model.addAttribute("userList",userList);
+        model.addAttribute("page",pageInfo);
+        return "admin/admin/users";
     }
     public Result getRole(){
 

@@ -5,10 +5,9 @@ import cn.com.guilongkeji.zsst.pojo.SysRole;
 import cn.com.guilongkeji.zsst.result.Result;
 import cn.com.guilongkeji.zsst.result.ResultFactory;
 import cn.com.guilongkeji.zsst.service.RoleService;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.lang.StringUtils;
+import cn.com.guilongkeji.zsst.utils.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ import java.util.List;
  * @Date 2020/2/4
  */
 @Controller
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class RoleController {
     @Resource
     private RoleService roleService;
@@ -58,7 +57,7 @@ public class RoleController {
                 list.add(sysRole);
             }
         }
-        if (StringUtils.isNotBlank(roleName)) {
+        if (StringUtils.isBlank(roleName)) {
             List<SysRole> search = new ArrayList<>();
             for (SysRole sysRole:list){
                 if (sysRole.getRole().contains(roleName)){

@@ -103,6 +103,8 @@ public class ActiveServiceImpl implements ActiveService {
             active.setBStatus(false);
             active.setStartTime(new Date());
             active.setName("暂无活动");
+            active.setBStatus(false);
+            activeList.add(active);
         }
         return activeList;
     }

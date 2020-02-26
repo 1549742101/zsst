@@ -1,5 +1,6 @@
 package cn.com.guilongkeji.zsst.service;
 
+import cn.com.guilongkeji.zsst.dto.UserDto;
 import cn.com.guilongkeji.zsst.pojo.SysResource;
 import cn.com.guilongkeji.zsst.pojo.SysRole;
 import cn.com.guilongkeji.zsst.pojo.SysUser;
@@ -106,4 +107,13 @@ public interface SysUserService {
      * @return java.util.List<cn.com.guilongkeji.zsst.pojo.SysResource>
      */
     public List<SysResource> getResourceTwo();
+
+    /**
+     * 功能描述
+     * @author xgl
+     * @date 2020/2/4
+     * @param
+     * @return java.util.List<cn.com.guilongkeji.zsst.dto.UserDto>
+     */
+    public List<UserDto> getAllUser();
 }

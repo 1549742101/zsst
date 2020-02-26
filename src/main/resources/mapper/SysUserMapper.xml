@@ -44,18 +44,34 @@
   </select>
     <select id="getAllUserByIds" resultMap="BaseResultMap">
       select <include refid="Base_Column_List"></include> from sys_user where id
-      not in (
-      <foreach collection="list" item="i" separator=",">
-        #{i}
-      </foreach>
+     in (
+      <choose>
+        <when test="list.size>0">
+          <foreach collection="list" item="i" separator=",">
+            #{i}
+          </foreach>
+        </when>
+        <otherwise>
+          -1
+        </otherwise>
+      </choose>
+
+
       )
     </select>
   <select id="getAllUserExcludeIds" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include> from sys_user where id
-    in (
-    <foreach collection="list" item="i" separator=",">
-      #{i}
-    </foreach>
+    not in (
+    <choose>
+      <when test="list.size>0">
+        <foreach collection="list" item="i" separator=",">
+          #{i}
+        </foreach>
+      </when>
+      <otherwise>
+        -1
+      </otherwise>
+    </choose>
     )
   </select>
   <select id="getUserByRolesOne" resultMap="BaseResultMap">
