@@ -16,6 +16,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +49,8 @@ public class SysUserController {
         System.out.println(username+password+rememberMe);
         username = HtmlUtils.htmlEscape(username);
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,password,rememberMe);
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,password);
+        usernamePasswordToken.setRememberMe(rememberMe);
         try {
             subject.login(usernamePasswordToken);
             SysUser user = userService.getUserByName(username);
@@ -74,20 +76,6 @@ public class SysUserController {
             return login();
         }
         List<SysResource> sysResourceList = null;
-        String[] roleId = {"2","3","5","6","7"};
-        if (subject.hasRole("")){
-            //SysRole sysRole =
-            sysResourceList = sysResourceService.getSysResourceByAll(StringUtils.StringToList("111"));
-        }else if (subject.hasRole(roleId[1])){
-
-        }else if (subject.hasRole(roleId[2])){
-
-        }else if (subject.hasRole(roleId[3])){
-
-        }else if (subject.hasRole(roleId[4])){
-
-        }else {
-        }
         SysUser sysUser = userService.getUserByName(subject.getPrincipal().toString());
         model.addAttribute("username",sysUser.getUsername());
         return "admin/admin/index";
@@ -115,18 +103,21 @@ public class SysUserController {
     public String welcome(){
         return "admin/welcome";
     }
+
     /**
-     * 功能描述 会员管理
-     * @author xgl
-     * @date 2020/2/4
-      * @param
-     * @return cn.com.guilongkeji.zsst.result.Result
+     * @param model 传参
+     * @param pageNum 页码
+     * @param phone 手机号
+     * @param id 用户编号
+     * @param username 用户名
+     * @param name 用户真实姓名
+     * @return
      */
     @RequestMapping("vipGet")
     public String vipGet(Model model,@RequestParam(required=true,defaultValue="1") Integer pageNum,@RequestParam(required=true,defaultValue="")String phone,@RequestParam(required=true,defaultValue="-1")Integer id,@RequestParam(required=true,defaultValue="")String username,@RequestParam(required=true,defaultValue="")String name){
         List<UserDto> userList = sysUserService.getAllUser();
         PageHelper.startPage(pageNum,5);
-        if (!id.equals(new Integer(-1))){
+        if (!id.equals(-1)){
             UserDto userDto1 =  null;
             for (UserDto userDto:userList
             ) {
@@ -183,7 +174,7 @@ public class SysUserController {
      * 功能描述 会员详情
      * @author xgl
      * @date 2020/2/4
-     * @param id
+     * @param id 编号
      * @return cn.com.guilongkeji.zsst.result.Result
      */
     @RequestMapping("vipGetAll")
@@ -196,7 +187,7 @@ public class SysUserController {
     public String regUser(Model model,@RequestParam(required=true,defaultValue="1") Integer pageNum,@RequestParam(required=true,defaultValue="")String phone,@RequestParam(required=true,defaultValue="-1")Integer id,@RequestParam(required=true,defaultValue="")String username){
         List<SysUser> userList = sysUserService.getAllSysUser();
         PageHelper.startPage(pageNum,5);
-        if (!id.equals(new Integer(-1))){
+        if (!id.equals(-1)){
             SysUser sysUser =  null;
             for (SysUser user:userList) {
                 if (user.getId().equals(id)){
@@ -244,10 +235,16 @@ public class SysUserController {
      * 功能描述 文件管理
      * @author xgl
      * @date 2020/2/18
-      * @param
      * @return java.lang.String
      */
     public String fileSystemControl(){
         return "";
+    }
+
+    @RequestMapping("/loginOut")
+    public String loginOut(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return login();
     }
 }

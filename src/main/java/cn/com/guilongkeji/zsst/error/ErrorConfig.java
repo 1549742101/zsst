@@ -15,7 +15,7 @@ import org.springframework.http.HttpStatus;
 public class ErrorConfig implements ErrorPageRegistrar {
     @Override
     public void registerErrorPages(ErrorPageRegistry registry) {
-        ErrorPage errorPage = new ErrorPage(HttpStatus.NOT_FOUND,"/index");
+        ErrorPage errorPage = new ErrorPage(HttpStatus.NOT_FOUND,"/about.html");
         registry.addErrorPages(errorPage);
     }
 }

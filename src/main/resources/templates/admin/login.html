@@ -48,7 +48,7 @@
                 layer.msg('玩命加载中',function(){
                     JSON.stringify(data.field);
                     $.ajax({
-                        url:form.action,
+                        url:"/admin/login",
                         type:"POST",
                         dataType:"json",
                         data:{
@@ -57,6 +57,7 @@
                             rememberMe: data.field.rememberMe==='on'
                         },
                         success:function (data) {
+                            console.log(data);
                             if (data.code==200){
                                 location.href='index';
                             }else {
@@ -64,7 +65,7 @@
                             }
                         },
                         error:function (data) {
-                            layer.msg(data.message);
+                            layer.msg("数据加载失败，请稍后重试");
                         }
                     })
                 });
@@ -78,15 +79,5 @@
 
     
     <!-- 底部结束 -->
-    <script>
-    //百度统计可去掉
-    let _hmt = _hmt || [];
-    (function() {
-      let hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-      let s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
 </body>
 </html>
