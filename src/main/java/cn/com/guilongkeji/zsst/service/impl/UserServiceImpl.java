@@ -8,7 +8,6 @@ import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +20,16 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    @Resource
+    @javax.annotation.Resource
     private SysUserMapper userMapper;
-    @Resource
+    @javax.annotation.Resource
     private UserDetailMapper userDetailMapper;
-    @Resource
+    @javax.annotation.Resource
     private CodeMapper codeMapper;
-    @Resource
+    @javax.annotation.Resource
     private SysRoleMapper sysRoleMapper;
-    @Resource
-    private SysResourceMapper sysResourceMapper;
+    @javax.annotation.Resource
+    private ResourceMapper resourceMapper;
 
     @Override
     public boolean isExist(String username) {
@@ -137,10 +136,10 @@ public class UserServiceImpl implements UserService {
         for (SysRole sysRole : sysRoles){
             list.addAll(StringUtils.StringToList(sysRole.getResourceIds()));
         }
-        List<SysResource> list1 = sysResourceMapper.getSysResourceByAll(list);
+        List<Resource> list1 = resourceMapper.getResourceByAll(list);
         List<String> stringList = new ArrayList<>();
-        for (SysResource sysResource:list1){
-            stringList.add(sysResource.getPermission());
+        for (Resource resource :list1){
+            stringList.add(resource.getPermission());
         }
         return stringList;
     }

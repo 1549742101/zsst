@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.guilongkeji.zsst.mapper.ResourceMapper">
+  <resultMap id="BaseResultMap" type="cn.com.guilongkeji.zsst.pojo.Resource">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="available" jdbcType="TINYINT" property="available" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id,name, `type`, priority, parent_id, icon, permission,available,url
+  </sql>
+
+  <sql id="Base_Column_Sql">
+     name, `type`, priority, parent_id, icon, permission,available,url
+  </sql>
+
+  <sql id="Base_Column_Java">
+    #{name},#{type},#{priority},#{parentId},#{icon},#{permission},#{available},#{url}
+  </sql>
+
+  <sql id="Base_Column_Item">
+    #{item.name},#{item.type},#{item.priority},#{item.parentId},#{item.icon},#{item.permission},#{item.available},#{item.url}
+  </sql>
+
+  <sql id="Base_Column_Update">
+    name=#{name}, type=#{type}, priority=#{priority}, parent_id=#{parentId}, icon=#{icon}, permission=#{permission}, available=#{available},url=#{url}
+  </sql>
+  <sql id="Base_Column_Update_Item">
+    name=#{item.name}, type=#{item.type}, priority=#{item.priority}, parent_id=#{item.parentId}, icon=#{item.icon}, permission=#{item.permission}, available=#{item.available},,url=#{item.url}
+  </sql>
+
+  <insert id="addResource" parameterType="cn.com.guilongkeji.zsst.pojo.Resource">
+    insert into resource(<include refid="Base_Column_Sql"></include>) values (<include
+          refid="Base_Column_Java"></include>)
+  </insert>
+
+  <insert id="addResources">
+    insert into resource(<include refid="Base_Column_Sql"></include>) values
+    <foreach collection="ResourcesList" item="item" separator=",">
+        (<include refid="Base_Column_Item"></include>)
+    </foreach>
+  </insert>
+
+  <update id="updateResource">
+    update set resource(<include refid="Base_Column_Update"></include>) where id = #{id}
+  </update>
+
+  <update id="updateResources">
+    <foreach collection="ResourcesList" item="item" separator=";" >
+      update set resource(<include refid="Base_Column_Update"></include>) where id = #{item.id}
+    </foreach>
+  </update>
+
+  <select id="getResourceById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from resource where id=#{id}
+  </select>
+
+  <select id="getResourceByAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from resource where id in (
+    <foreach collection="list" separator="," item="i">
+    #{i}
+    </foreach>)
+  </select>
+
+  <select id="getAllResource" resultMap="BaseResultMap" >
+    select <include refid="Base_Column_List"></include> from resource
+  </select>
+</mapper>

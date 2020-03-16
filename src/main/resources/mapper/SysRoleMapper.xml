@@ -51,10 +51,10 @@
     select <include refid="Base_Column_List"></include> from sys_role where id = #{id}
   </select>
   <select id="getRoleByAll" resultMap="BaseResultMap" parameterType="cn.com.guilongkeji.zsst.pojo.SysUser">
-    select <include refid="Base_Column_List"></include> from sys_role where id in
+    select <include refid="Base_Column_List"></include> from sys_role where id in(
     <foreach collection="list" item="i" separator=",">
       #{i}
-    </foreach>
+    </foreach>)
   </select>
   <select id="getAllRole" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include> from sys_role

@@ -72,4 +72,5 @@ public class RoleController {
         model.addAttribute("page",pageInfo);
         return "admin/admin/roles";
     }
+
 }

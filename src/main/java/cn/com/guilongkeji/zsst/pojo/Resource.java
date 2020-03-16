@@ -3,7 +3,7 @@ package cn.com.guilongkeji.zsst.pojo;
 import javax.persistence.*;
 
 @Table(name = "sys_resource")
-public class SysResource {
+public class Resource {
     /**
      * 编号 主键
      */
@@ -37,8 +37,8 @@ public class SysResource {
      *
      父编号列表
      */
-    @Column(name = "parent_ids")
-    private String parentIds;
+    @Column(name = "icon")
+    private String icon;
 
     /**
      *
@@ -52,6 +52,8 @@ public class SysResource {
     @Column(name = "available")
     private Byte available;
 
+    @Column(name = "url")
+    private String url;
     /**
      * 获取编号 主键
      *
@@ -155,19 +157,19 @@ public class SysResource {
      * @return parent_ids - 	
     父编号列表
      */
-    public String getParentIds() {
-        return parentIds;
+    public String getIcon() {
+        return icon;
     }
 
     /**
      * 设置	
      父编号列表
      *
-     * @param parentIds
+     * @param icon
     父编号列表
      */
-    public void setParentIds(String parentIds) {
-        this.parentIds = parentIds == null ? null : parentIds.trim();
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     /**
@@ -216,5 +218,13 @@ public class SysResource {
     }
     public boolean getBAvailable(){
         return this.available>0?true:false;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

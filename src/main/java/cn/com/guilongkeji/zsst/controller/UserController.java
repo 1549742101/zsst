@@ -34,6 +34,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/app")
+@SessionAttributes({"menuUrl","username"})
 public class UserController {
     @Resource
     private UserService userService;
@@ -128,9 +129,9 @@ public class UserController {
         }else {
             menuUrl = new HashMap<>(5);
             menuUrl.put("首页","index");
-            menuUrl.put("觅食","/common/found");
-            menuUrl.put("我的","/common/found");
-            menuUrl.put("购物车","/common/found");
+            menuUrl.put("觅食","/common/notPermission");
+            menuUrl.put("我的","/common/notPermission");
+            menuUrl.put("购物车","/common/notPermission");
         }
         model.addAttribute("shop",shopService.getHotsShop());
         model.addAttribute("username",username);

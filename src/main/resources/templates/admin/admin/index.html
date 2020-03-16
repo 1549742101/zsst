@@ -56,7 +56,23 @@
 <div class="left-nav">
     <div id="side-nav">
         <ul id="nav">
-            <li>
+            <li th:each="item,itemStat:${menu}">
+                <a href="javascript:;">
+                    <i class="iconfont" th:utext="${item.getResource().getIcon()}">&#xe6b8;</i>
+                    <cite th:text="${item.getResource().getName()}">会员管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li th:each="i,iStat:${item.getResourceList()}">
+                        <a _href="member-list.html" th:_href="${i.getUrl()}">
+                            <i class="iconfont" th:utext="${i.getIcon()}">&#xe70b;</i>
+                            <cite th:text="${i.getName()}">会员列表</cite>
+
+                        </a>
+                    </li >
+                </ul>
+            </li>
+           <!-- <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
                     <cite>会员管理</cite>
@@ -85,8 +101,8 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li>
+            </li>-->
+          <!--  <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
                     <cite>订单管理</cite>
@@ -205,7 +221,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>

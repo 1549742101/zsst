@@ -1,12 +1,15 @@
 package cn.com.guilongkeji.zsst.controller;
 
+import cn.com.guilongkeji.zsst.dto.ResourceDto;
 import cn.com.guilongkeji.zsst.dto.UserDto;
-import cn.com.guilongkeji.zsst.pojo.SysResource;
+import cn.com.guilongkeji.zsst.pojo.Resource;
+import cn.com.guilongkeji.zsst.pojo.SysRole;
 import cn.com.guilongkeji.zsst.pojo.SysUser;
 import cn.com.guilongkeji.zsst.pojo.UserDetail;
 import cn.com.guilongkeji.zsst.result.Result;
 import cn.com.guilongkeji.zsst.result.ResultFactory;
-import cn.com.guilongkeji.zsst.service.SysResourceService;
+import cn.com.guilongkeji.zsst.service.ResourceService;
+import cn.com.guilongkeji.zsst.service.RoleService;
 import cn.com.guilongkeji.zsst.service.SysUserService;
 import cn.com.guilongkeji.zsst.service.UserService;
 import cn.com.guilongkeji.zsst.utils.StringUtils;
@@ -16,15 +19,19 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.TreeSet;
+
+import static java.util.Comparator.comparingLong;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toCollection;
 
 /**
  * @Description
@@ -36,12 +43,14 @@ import java.util.List;
 @Controller
 @RequestMapping("admin")
 public class SysUserController {
-    @Resource
+    @javax.annotation.Resource
     private UserService userService;
-    @Resource
+    @javax.annotation.Resource
     private SysUserService sysUserService;
-    @Resource
-    private SysResourceService sysResourceService;
+    @javax.annotation.Resource
+    private RoleService roleService;
+    @javax.annotation.Resource
+    private ResourceService resourceService;
     private StringBuffer message=new StringBuffer("");
     @PostMapping("/login")
     @ResponseBody
@@ -75,8 +84,19 @@ public class SysUserController {
         if (!subject.isAuthenticated()){
             return login();
         }
-        List<SysResource> sysResourceList = null;
         SysUser sysUser = userService.getUserByName(subject.getPrincipal().toString());
+        HashMap<Integer,List<Resource>> result = roleService.getResourceByRole();
+        List<SysRole> sysRoleList = roleService.getRoleByAll(StringUtils.StringToList(sysUser.getRoleIds()));
+        List<Resource> list = new ArrayList<>();
+        for (SysRole sysRole:sysRoleList) {
+            list.addAll(result.get(sysRole.getId()));
+        }
+        list=list.stream().collect(
+                collectingAndThen(
+                        toCollection(() -> new TreeSet<>(comparingLong(Resource::getId))), ArrayList::new)
+        );
+        List<ResourceDto> myMenu = resourceService.getResourceDto(list);
+        model.addAttribute("menu",myMenu);
         model.addAttribute("username",sysUser.getUsername());
         return "admin/admin/index";
     }

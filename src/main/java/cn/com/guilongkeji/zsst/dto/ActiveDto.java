@@ -5,6 +5,7 @@ import cn.com.guilongkeji.zsst.pojo.Dish;
 import cn.com.guilongkeji.zsst.pojo.Img;
 import cn.com.guilongkeji.zsst.pojo.Shop;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import java.math.BigDecimal;
@@ -19,6 +20,7 @@ import java.util.List;
  * @Date 2020/2/10
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ActiveDto extends Active {
     private Img image;
     private Shop shop;
@@ -37,4 +39,5 @@ public class ActiveDto extends Active {
         this.setShopId(active.getShopId());
         this.setImg(active.getImg());
     }
+
 }

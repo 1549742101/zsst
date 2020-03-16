@@ -1,5 +1,16 @@
 #Spring Boot Config
 server:
+  spring:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      jedis:
+        pool:
+          max-active: 100
+          max-wait: 10
+          max-idle: 10
+          min-idle: 10
   #ssl:
   #key-store: C:/Program Files/tmcssl/2894343_guilongkeji.com.cn.pfx
   #key-store-password: m85e0eH7

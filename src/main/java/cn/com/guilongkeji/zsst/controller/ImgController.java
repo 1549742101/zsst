@@ -30,6 +30,7 @@ public class ImgController {
         return "img";
     }
     @RequestMapping("/getImg")
+    @ResponseBody
     public String getImgById(Integer id){
         Img img = imgService.getImgById(id);
         return "/api/img/"+img.getUrl()+"/"+img.getName();

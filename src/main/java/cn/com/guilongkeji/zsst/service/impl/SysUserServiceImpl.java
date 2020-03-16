@@ -1,18 +1,17 @@
 package cn.com.guilongkeji.zsst.service.impl;
 
 import cn.com.guilongkeji.zsst.dto.UserDto;
-import cn.com.guilongkeji.zsst.mapper.SysResourceMapper;
+import cn.com.guilongkeji.zsst.mapper.ResourceMapper;
 import cn.com.guilongkeji.zsst.mapper.SysRoleMapper;
 import cn.com.guilongkeji.zsst.mapper.SysUserMapper;
 import cn.com.guilongkeji.zsst.mapper.UserDetailMapper;
-import cn.com.guilongkeji.zsst.pojo.SysResource;
+import cn.com.guilongkeji.zsst.pojo.Resource;
 import cn.com.guilongkeji.zsst.pojo.SysRole;
 import cn.com.guilongkeji.zsst.pojo.SysUser;
 import cn.com.guilongkeji.zsst.pojo.UserDetail;
 import cn.com.guilongkeji.zsst.service.SysUserService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +24,13 @@ import java.util.List;
  */
 @Service
 public class SysUserServiceImpl implements SysUserService {
-    @Resource
+    @javax.annotation.Resource
     private SysUserMapper sysUserMapper;
-    @Resource
+    @javax.annotation.Resource
     private UserDetailMapper userDetailMapper;
-    @Resource
-    private SysResourceMapper sysResourceMapper;
-    @Resource
+    @javax.annotation.Resource
+    private ResourceMapper resourceMapper;
+    @javax.annotation.Resource
     private SysRoleMapper sysRoleMapper;
     @Override
     public SysUser isLogin(String username, String password) {
@@ -79,12 +78,12 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public List<SysResource> getResourceOne() {
+    public List<Resource> getResourceOne() {
         return null;
     }
 
     @Override
-    public List<SysResource> getResourceTwo() {
+    public List<Resource> getResourceTwo() {
         return null;
     }
 

@@ -1,6 +1,15 @@
 package cn.com.guilongkeji.zsst.controller;
 
+import cn.com.guilongkeji.zsst.pojo.Shop;
+import cn.com.guilongkeji.zsst.service.ShopService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Description
@@ -11,7 +20,14 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ShopController {
-    public String getShop(){
-        return "";
+    @Resource
+    private ShopService shopService;
+    @RequestMapping("shop")
+    public String getShop(@RequestParam(defaultValue = "-1") Integer id, Model model){
+        List<Shop> shopList = new ArrayList<>();
+        shopList= shopService.getAllShop();
+        model.addAttribute(model);
+        model.addAttribute("shop",shopList);
+        return "app/shop";
     }
 }

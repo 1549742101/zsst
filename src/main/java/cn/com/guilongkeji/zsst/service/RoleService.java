@@ -1,8 +1,7 @@
 package cn.com.guilongkeji.zsst.service;
 
-import cn.com.guilongkeji.zsst.pojo.SysResource;
+import cn.com.guilongkeji.zsst.pojo.Resource;
 import cn.com.guilongkeji.zsst.pojo.SysRole;
-import cn.com.guilongkeji.zsst.pojo.SysUser;
 
 import java.util.HashMap;
 import java.util.List;
@@ -91,9 +90,8 @@ public interface RoleService {
      * 功能描述
      * @author xgl
      * @date 2020/2/13
-      * @param sysRoleList
-     * @return java.util.HashMap<java.lang.Integer,java.util.List<cn.com.guilongkeji.zsst.pojo.SysResource>>
+      * @param
+     * @return java.util.HashMap<java.lang.Integer,java.util.List<cn.com.guilongkeji.zsst.pojo.Resource>>
      */
-
-    public HashMap<Integer,List<SysResource>> getSysResourceByRole(List<SysRole> sysRoleList);
+    public HashMap<Integer,List<Resource>> getResourceByRole();
 }

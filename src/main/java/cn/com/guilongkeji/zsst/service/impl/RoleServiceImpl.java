@@ -1,15 +1,13 @@
 package cn.com.guilongkeji.zsst.service.impl;
 
-import cn.com.guilongkeji.zsst.mapper.SysResourceMapper;
+import cn.com.guilongkeji.zsst.mapper.ResourceMapper;
 import cn.com.guilongkeji.zsst.mapper.SysRoleMapper;
-import cn.com.guilongkeji.zsst.pojo.SysResource;
+import cn.com.guilongkeji.zsst.pojo.Resource;
 import cn.com.guilongkeji.zsst.pojo.SysRole;
-import cn.com.guilongkeji.zsst.pojo.SysUser;
 import cn.com.guilongkeji.zsst.service.RoleService;
 import cn.com.guilongkeji.zsst.utils.StringUtils;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,10 +21,10 @@ import java.util.List;
  */
 @Service
 public class RoleServiceImpl implements RoleService {
-    @Resource
+    @javax.annotation.Resource
     private SysRoleMapper sysRoleMapper;
-    @Resource
-    private SysResourceMapper sysResourceMapper;
+    @javax.annotation.Resource
+    private ResourceMapper resourceMapper;
     @Override
     public void addRole(SysRole sysRole) {
         sysRoleMapper.addRole(sysRole);
@@ -78,11 +76,12 @@ public class RoleServiceImpl implements RoleService {
         sysRoleMapper.updateRoles(sysRoles);
     }
     @Override
-    public HashMap<Integer,List<SysResource>> getSysResourceByRole(List<SysRole> sysRoleList){
-        HashMap<Integer,List<SysResource>> result= new HashMap<>();
+    public HashMap<Integer,List<Resource>> getResourceByRole(){
+        List<SysRole> sysRoleList = sysRoleMapper.getAllRole();
+        HashMap<Integer,List<Resource>> result= new HashMap<>();
         for (SysRole sysRole:sysRoleList){
-            List<SysResource> sysResources = sysResourceMapper.getSysResourceByAll(StringUtils.StringToList(sysRole.getResourceIds()));
-            result.put(sysRole.getId(),sysResources);
+            List<Resource> resources = resourceMapper.getResourceByAll(StringUtils.StringToList(sysRole.getResourceIds()));
+            result.put(sysRole.getId(), resources);
         }
         return result;
     }
