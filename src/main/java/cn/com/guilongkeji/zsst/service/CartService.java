@@ -12,7 +12,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/2/9
  */
-public interface CartService {
+public interface CartService extends BaseService<Cart>{
     /**
      * 功能描述 添加购物车
      * @author xgl

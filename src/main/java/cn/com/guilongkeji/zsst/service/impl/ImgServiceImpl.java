@@ -48,4 +48,14 @@ public class ImgServiceImpl implements ImgService {
     public List<Img> getImgByUrl(String url) {
         return imgMapper.getImgByUrl(url);
     }
+
+    @Override
+    public List<Img> search(Img img) {
+        return null;
+    }
+
+    @Override
+    public List<Img> sort(List<Img> list,Integer o) {
+        return null;
+    }
 }

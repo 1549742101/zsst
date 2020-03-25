@@ -101,6 +101,7 @@
                 url:"getReCode",
                 type:"post",
                 dataType:"text",
+                async: false,
                 success:function (data) {
                     booCode=false;
                     recode=data;
@@ -130,10 +131,12 @@
             },
             type: "post",
             dataType: "json",
+            async: false,
             success:function (data) {
                 let result = data;
-                if (result.code == 200){
-                    booCode = true;
+                if (result.code === 200){
+                    console.log(result)
+                    booCode=true;
                 }else {
                     if (val===1){
                         getCode(1);
@@ -198,7 +201,7 @@
                 }
             })
         }else {
-            codeTrue(1);
+            //codeTrue(1);
         }
     });
     let booCodePhone = false;

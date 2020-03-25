@@ -13,7 +13,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/2/9
  */
-public interface ActiveService {
+public interface ActiveService extends BaseService<Active>{
     /**
      * 功能描述 增加活动
      * @author xgl

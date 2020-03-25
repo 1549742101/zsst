@@ -6,11 +6,15 @@ import cn.com.guilongkeji.zsst.pojo.Dish;
 import cn.com.guilongkeji.zsst.pojo.Order;
 import cn.com.guilongkeji.zsst.pojo.Shop;
 import cn.com.guilongkeji.zsst.service.ShopService;
+import cn.com.guilongkeji.zsst.utils.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -91,12 +95,12 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Shop getShopById(Integer id) {
-        return null;
+        return shopMapper.getShopById(id);
     }
 
     @Override
     public List<Shop> getAllShop() {
-        return null;
+        return shopMapper.getAllShop();
     }
 
     @Override
@@ -145,5 +149,41 @@ public class ShopServiceImpl implements ShopService {
         c[2]=sale;
         c[3]=sales;
         return c;
+    }
+
+    @Override
+    public List<Shop> search(Shop shop) {
+        List<Shop> list = new ArrayList<>();
+        if (!ObjectUtils.isEmpty(shop)){
+            List<Shop> shopList = this.getAllShop();
+            String name = shop.getName();
+            if (StringUtils.isNotEmpty(name)){
+                for (Shop shop1 : shopList){
+                    if (StringUtils.contains(shop1.getName(),shop.getName())){
+                        list.add(shop1);
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public List<Shop> sort(List<Shop> list,Integer o) {
+        switch (o){
+            case 2:
+                Collections.sort(
+                        list,(o2,o1)->o1.getName().compareToIgnoreCase(o2.getName())
+                );break;
+            case 3:
+                Collections.sort(
+                        list,(o1,o2)->o1.getId().compareTo(o2.getId())
+                );break;
+            default:
+                Collections.sort(
+                        list,(o2,o1)->o1.getHistory().compareTo(o2.getHistory())
+                );
+        }
+        return list;
     }
 }

@@ -100,4 +100,14 @@ public class SysUserServiceImpl implements SysUserService {
         }
         return userDtoList;
     }
+
+    @Override
+    public List<SysUser> search(SysUser sysUser) {
+        return null;
+    }
+
+    @Override
+    public List<SysUser> sort(List<SysUser> list,Integer o) {
+        return null;
+    }
 }

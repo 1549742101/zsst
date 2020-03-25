@@ -108,4 +108,14 @@ public class ActiveServiceImpl implements ActiveService {
         }
         return activeList;
     }
+
+    @Override
+    public List<Active> search(Active active) {
+        return null;
+    }
+
+    @Override
+    public List<Active> sort(List<Active> list,Integer o) {
+        return null;
+    }
 }

@@ -1,5 +1,7 @@
 package cn.com.guilongkeji.zsst.controller;
 
+import org.springframework.stereotype.Controller;
+
 /**
  * @Description
  * @Author xgl
@@ -7,5 +9,7 @@ package cn.com.guilongkeji.zsst.controller;
  * @Since 1.0
  * @Date 2020/2/4
  */
+@Controller
 public class OrderController {
+
 }

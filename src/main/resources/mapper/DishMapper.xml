@@ -14,19 +14,20 @@
     <result column="praise" jdbcType="DECIMAL" property="praise" />
     <result column="shop_id" jdbcType="INTEGER" property="shopId" />
     <result column="active" jdbcType="TINYINT" property="active" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
     <result column="status" jdbcType="TINYINT" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbg.generated
     -->
-    id, name, money, img, sales, sale, praise, shop_id, active, status
+    id, name, money, img, sales, sale, praise, shop_id, active, status,detail
   </sql>
   <sql id="BaseExcludeId">
-    name, money, img, sales, sale, praise, shop_id, active, status
+    name, money, img, sales, sale, praise, shop_id, active, status,detail
   </sql>
   <sql id="BaseInsert">
-    #{name},#{money},#{img},#{sales},#{sale},#{praise},#{shopId},#{active},#{status}
+    #{name},#{money},#{img},#{sales},#{sale},#{praise},#{shopId},#{active},#{status},#{detail}
   </sql>
   <insert id="addDish">
     insert into dish (<include refid="BaseExcludeId"></include>) values (<include refid="BaseInsert"></include>)
@@ -34,16 +35,16 @@
   <insert id="addAllDish">
     insert into dish (<include refid="BaseExcludeId"></include>) values
     <foreach collection="list" item="i" separator=",">
-      (#{i.name},#{i.money},#{i.img},#{i.sales},#{i.sale},#{i.praise},#{i.shopId},#{i.active},#{i.status})
+      (#{i.name},#{i.money},#{i.img},#{i.sales},#{i.sale},#{i.praise},#{i.shopId},#{i.active},#{i.status},#{i.detail})
     </foreach>
   </insert>
   <update id="updateDish">
-    update set ( name = #{name},money= #{money},img = #{img},sales = #{sales},sale = #{sale},praise = #{praise},shop_id = #{shopId},active = #{active},status = #{status})
+    update set ( name = #{name},money= #{money},img = #{img},sales = #{sales},sale = #{sale},praise = #{praise},shop_id = #{shopId},active = #{active},status = #{status}),detail=#{detail})
     where id = #{id}
   </update>
   <update id="updateAllDish">
     <foreach collection="list" item="i" separator=";">
-      update set (name = #{i.name},money= #{i.money},img = #{i.img},sales = #{i.sales},sale = #{i.sale},praise = #{i.praise},shop_id = #{i.shopId},active = #{i.active},status = #{i.status})
+      update set (name = #{i.name},money= #{i.money},img = #{i.img},sales = #{i.sales},sale = #{i.sale},praise = #{i.praise},shop_id = #{i.shopId},active = #{i.active},status = #{i.status},detail=#{i.detail})
       where id = i.id
     </foreach>
   </update>

@@ -11,7 +11,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/2/9
  */
-public interface AssessService {
+public interface AssessService extends BaseService<Assess>{
     /**
      * 功能描述 增加评价
      * @author xgl

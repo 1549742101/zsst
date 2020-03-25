@@ -87,7 +87,7 @@
             <div class="shop_title_img"><img src="/app/img/hotShop.jpg"></div>
             <ul class="shop_content">
                 <li th:object="${shop.get(0)}">
-                    <span><a th:href="'/shop?id='+*{id}"><img th:src="'/api/img/'+${shop.get(0).getImg().getUrl()}+'/'+${shop.get(0).getImg().getName()}" alt=""></a></span>
+                    <span><a th:href="'shop?id='+*{id}"><img th:src="'/api/img/'+${shop.get(0).getImg().getUrl()}+'/'+${shop.get(0).getImg().getName()}" alt=""></a></span>
                     <div>
 
                         <ul>
@@ -127,7 +127,7 @@
                     </div>
                 </li>
                 <li th:object="${shop.get(1)}">
-                    <span><a th:href="'/shop?id='+*{id}"><img th:src="'/api/img/'+${shop.get(1).getImg().getUrl()}+'/'+${shop.get(1).getImg().getName()}" alt=""></a></span>
+                    <span><a th:href="'shop?id='+*{id}"><img th:src="'/api/img/'+${shop.get(1).getImg().getUrl()}+'/'+${shop.get(1).getImg().getName()}" alt=""></a></span>
                     <div>
 
                         <ul>
@@ -165,9 +165,12 @@
             </p>
         </div>
     </div>
-    <div class="end">
-        <h1>贵龙科技有限公司</h1>
-    </div>
+    <footer class="end">
+        <h2><a href="https://guilongkeji.com.cn">贵龙科技有限公司</a></h2>
+        <p>Copyright © 2020 XGL. All rights reserved.</p>
+        <p><a href="http://cq.beian.miit.gov.cn/publish/query/indexFirst.action">渝ICP备18014747号-2</a></p>
+        <p><a href="https://mail.qq.com/" target="_blank" title="QQ邮箱">1549742101@qq.com</a></p>
+    </footer>
 </div>
 <!-- 按钮：用于打开模态框
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">

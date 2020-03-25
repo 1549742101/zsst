@@ -87,4 +87,5 @@ public interface ShopMapper{
      * @return java.util.List<cn.com.guilongkeji.zsst.pojo.Shop>
      */
     public List<Shop> getHotsShop();
+
 }

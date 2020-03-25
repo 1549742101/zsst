@@ -72,8 +72,8 @@ public class UserController {
         phone = HtmlUtils.htmlEscape(phone);
         Subject subject = SecurityUtils.getSubject();
         if (StringUtils.isBlank(username) ||StringUtils.isBlank(password)||StringUtils.isBlank(phone)){
-            message=username.equals("")?new StringBuffer("用户名为空"):
-                    password.equals("")?new StringBuffer("" +
+            message= "".equals(username)?new StringBuffer("用户名为空"):
+                    "".equals(password)?new StringBuffer("" +
                             "密码为空"):new StringBuffer("" +
                             "手机号为空");
             return ResultFactory.buildFailResult(message.toString());

@@ -29,6 +29,7 @@ public class ActiveDto extends Active {
 
     }
     public ActiveDto(Active active){
+        super();
         this.setId(active.getId());
         this.setName(active.getName());
         this.setCause(active.getCause());

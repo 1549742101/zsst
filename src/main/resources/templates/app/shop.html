@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>掌上食堂-首页</title>
+    <title>掌上食堂-店铺</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link th:href="@{/app/css/public.css}" href="/app/css/public.css" rel="stylesheet">
     <link th:href="@{/app/css/index.css}" href="/app/css/public.css" rel="stylesheet">
+    <link th:href="@{/app/css/shop.css}" href="/app/css/public.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}"href="/webjars/bootstrap/4.4.1/css/bootstrap.min.css">
 
 </head>
@@ -30,23 +31,59 @@
     </div>
     <div class="form ctt">
         <div class="form_content">
+            <ul class="form_menu" th:if="${username}==null">
+                <li class="hello">亲，登录发现更多好货哦！</li>
+                <li>
+                    <ul class="form_menu1">
+                        <li><a href="javascript:void(0)" class="login_in" data-toggle="modal" data-target="#login">【点击登录】</a></li>
+                    </ul>
+                    <ul class="form_menu2">
+                        <li><a href="index" class="refresh">【刷新页面】</a></li>
+                    </ul>
+                </li>
+            </ul>
             <ul class="form_menu" th:if="${username}!=null">
                 <li class="hello">尊敬的 <a href="myCount.html" th:href="@{${menuUrl.get('我的')}}" th:text="${username}"></a>用户，欢迎您光临本网站！</li>
                 <li>
                     <ul class="form_menu1">
-                        <li><a href="javascript:void(0)" class="login_in" data-toggle="modal" data-target="#login">【点击退出】</a></li>
+                        <li><a href="loginOut" class="login_out">【点击退出】</a></li>
                     </ul>
                     <ul class="form_menu2">
-                        <li><a href="javascript:void(0)" class="refresh">【刷新页面】</a></li>
+                        <li><a href="index" class="refresh">【刷新页面】</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
-
+    <main class="ctt shop_main">
+        <form action="shop" th:action="@{shop}" type="post">
+            <input type="search" placeholder="请输入店铺名查询" name="name">
+            <input type="submit" value="查询">
+            <select name="sort" id="sort" style="float: right">
+                <option value="1">按热度排序</option>
+                <option value="2">按名称排序</option>
+                <option value="3">按编号排序</option>
+            </select>
+        </form>
+        <ul class="shop_ul">
+            <li th:each="s,sStat:${shop}" th:if="${s}!=null">
+                <img th:src="@{'/getImg?id='+${s.avatar}}" alt="logo">
+                <p th:text="'店铺名：'+${s.name}"></p>
+                <p th:text="${s.history}+'次浏览'"></p>
+                <form th:action="@{'getShopDetails?sid='+${s.id}}">
+                    <input type="submit" value="店铺详情">
+                </form>
+            </li>
+        </ul>
+    </main>
+    <footer class="end">
+        <h2><a href="https://guilongkeji.com.cn">贵龙科技有限公司</a></h2>
+        <p>Copyright © 2020 XGL. All rights reserved.</p>
+        <p><a href="http://cq.beian.miit.gov.cn/publish/query/indexFirst.action">渝ICP备18014747号-2</a></p>
+        <p><a href="https://mail.qq.com/" target="_blank" title="QQ邮箱">1549742101@qq.com</a></p>
+    </footer>
 </div>
 <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" src="webjars/jquery/3.4.1/jquery.min.js"></script>
 <script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}" src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script th:src="@{/app/js/index.js}"></script>
 </body>
 </html>

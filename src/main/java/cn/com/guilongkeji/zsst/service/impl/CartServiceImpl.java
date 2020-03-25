@@ -65,4 +65,14 @@ public class CartServiceImpl implements CartService {
     public Dish getDishByCartMax() {
         return null;
     }
+
+    @Override
+    public List<Cart> search(Cart cart) {
+        return null;
+    }
+
+    @Override
+    public List<Cart> sort(List<Cart> list,Integer o) {
+        return null;
+    }
 }

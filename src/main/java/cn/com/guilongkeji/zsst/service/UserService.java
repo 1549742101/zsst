@@ -13,7 +13,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/1/5
  */
-public interface UserService {
+public interface UserService extends BaseService<UserDetail>{
     /**
      * 功能描述  根据用户名判断用户名是否被创建
      * @author xgl

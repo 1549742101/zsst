@@ -80,9 +80,21 @@ public class RoleServiceImpl implements RoleService {
         List<SysRole> sysRoleList = sysRoleMapper.getAllRole();
         HashMap<Integer,List<Resource>> result= new HashMap<>();
         for (SysRole sysRole:sysRoleList){
-            List<Resource> resources = resourceMapper.getResourceByAll(StringUtils.StringToList(sysRole.getResourceIds()));
-            result.put(sysRole.getId(), resources);
+            if (StringUtils.isNotEmpty(sysRole.getResourceIds())){
+                List<Resource> resources = resourceMapper.getResourceByAll(StringUtils.StringToList(sysRole.getResourceIds()));
+                result.put(sysRole.getId(), resources);
+            }
         }
         return result;
+    }
+
+    @Override
+    public List<SysRole> search(SysRole sysRole) {
+        return null;
+    }
+
+    @Override
+    public List<SysRole> sort(List<SysRole> list,Integer o) {
+        return null;
     }
 }

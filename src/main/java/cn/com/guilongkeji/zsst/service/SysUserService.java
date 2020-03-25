@@ -15,7 +15,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/1/12
  */
-public interface SysUserService {
+public interface SysUserService extends BaseService<SysUser>{
     /**
      * 功能描述
      * @author xgl

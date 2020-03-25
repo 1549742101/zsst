@@ -13,7 +13,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/1/13
  */
-public interface ResourceService {
+public interface ResourceService extends BaseService<Resource>{
     /**
      * 功能描述 更新资源
      * @author xgl

@@ -14,7 +14,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/1/27
  */
-public interface ShopService {
+public interface ShopService extends BaseService<Shop>{
     /**
      * 功能描述 根据用户编号获取订单
      * @author xgl

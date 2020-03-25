@@ -54,4 +54,14 @@ public class AssessServiceImpl implements AssessService {
     public List<Assess> getAssessByStatus() {
         return null;
     }
+
+    @Override
+    public List<Assess> search(Assess assess) {
+        return null;
+    }
+
+    @Override
+    public List<Assess> sort(List<Assess> list,Integer o) {
+        return null;
+    }
 }

@@ -7,6 +7,7 @@ ul,li,ol{
 	list-style: none;
 }
 a{
+	color: #000000;
 	text-decoration: none;
 }
 .clears{
@@ -27,4 +28,23 @@ body{
 }
 .bgb{
 	background: white;
+}
+.end{
+	margin-top: 100px;
+	height: 180px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background: #d75353;
+}
+.end>h2>a{
+	text-decoration: none;
+	color: #000000;
+	margin: 0;
+}
+.end>p>a{
+	text-decoration: none;
+	color: #000000;
+	margin: 0;
 }

@@ -143,4 +143,14 @@ public class UserServiceImpl implements UserService {
         }
         return stringList;
     }
+
+    @Override
+    public List<UserDetail> search(UserDetail userDetail) {
+        return null;
+    }
+
+    @Override
+    public List<UserDetail> sort(List<UserDetail> list,Integer o) {
+        return null;
+    }
 }

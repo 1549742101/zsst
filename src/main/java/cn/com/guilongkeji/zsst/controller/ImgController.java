@@ -29,10 +29,10 @@ public class ImgController {
         model.addAttribute("allImg", FileSystem.getAllFileName(uploadFolder));
         return "img";
     }
-    @RequestMapping("/getImg")
-    @ResponseBody
+    @RequestMapping(value = "/getImg")
     public String getImgById(Integer id){
         Img img = imgService.getImgById(id);
-        return "/api/img/"+img.getUrl()+"/"+img.getName();
+        return "redirect:/api/img/"+img.getUrl()+"/"+img.getName();
     }
+
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/2/10
  */
-public interface ImgService {
+public interface ImgService extends BaseService<Img>{
     /**
      * 功能描述 增加图片
      * @author xgl

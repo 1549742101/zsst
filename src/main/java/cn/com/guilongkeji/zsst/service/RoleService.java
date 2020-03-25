@@ -13,7 +13,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2020/2/6
  */
-public interface RoleService {
+public interface RoleService extends BaseService<SysRole>{
     /**
      * 功能描述 增加角色
      * @author xgl

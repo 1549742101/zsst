@@ -89,7 +89,9 @@ public class SysUserController {
         List<SysRole> sysRoleList = roleService.getRoleByAll(StringUtils.StringToList(sysUser.getRoleIds()));
         List<Resource> list = new ArrayList<>();
         for (SysRole sysRole:sysRoleList) {
-            list.addAll(result.get(sysRole.getId()));
+            if (StringUtils.isNotEmpty(sysRole.getResourceIds())){
+                list.addAll(result.get(sysRole.getId()));
+            }
         }
         list=list.stream().collect(
                 collectingAndThen(

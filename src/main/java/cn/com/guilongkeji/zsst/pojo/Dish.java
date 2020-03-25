@@ -61,6 +61,10 @@ public class Dish {
      */
     private Byte status;
     /**
+     * 菜品描述
+     */
+    private String detail;
+    /**
      * 获取菜品编号
      *
      * @return id - 菜品编号
@@ -254,5 +258,13 @@ public class Dish {
     }
     public boolean getBActive(){
         return this.active>0?true:false;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 }

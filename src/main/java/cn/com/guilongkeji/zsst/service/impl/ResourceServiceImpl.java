@@ -68,12 +68,7 @@ public class ResourceServiceImpl implements ResourceService {
                 list.add(rd);
             }
         }
-       /* Collections.sort(list,new Comparator<ResourceDto>(){
-            @Override
-            public int compare(ResourceDto o1, ResourceDto o2) {
-                return o1.getResource().getPriority().compareTo(o2.getResource().getPriority());
-            }
-        });*/
+        Collections.sort(list, (o1, o2) -> o1.getResource().getPriority().compareTo(o2.getResource().getPriority()));
         return list;
     }
     private List<Resource> getChild(List<Resource> list,Resource parent){
@@ -84,12 +79,22 @@ public class ResourceServiceImpl implements ResourceService {
                 list1.add(r);
             }
         }
-       /* Collections.sort(list,new Comparator<Resource>(){
+        Collections.sort(list1,new Comparator<Resource>(){
             @Override
             public int compare(Resource o1, Resource o2) {
                 return o1.getPriority().compareTo(o2.getPriority());
             }
-        });*/
+        });
         return list1;
+    }
+
+    @Override
+    public List<Resource> search(Resource resource) {
+        return null;
+    }
+
+    @Override
+    public List<Resource> sort(List<Resource> list,Integer o) {
+        return null;
     }
 }

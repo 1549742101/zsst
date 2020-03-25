@@ -24,4 +24,8 @@ public class DefaultExceptionHandler {
     public Result smsException(SmsException e){
         return e.getResult();
     }
+    @ExceptionHandler(Exception.class)
+    public String Exception(Exception e){
+        return "common/notPermission";
+    }
 }
